@@ -3,7 +3,6 @@ import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../../ui/BentoGrid";
 import { Ripple } from "@/components/ui/Ripple";
 import logo from "../../../../public/logo/cygnus.png";
-import DotGrid from "../../ui/DotGrid";
 
 const items = [
   {

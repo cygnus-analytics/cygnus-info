@@ -29,7 +29,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <NavbarDemo /> */}
         <MegaNavbar/>
         <main className="pt-18"> 
           {children}

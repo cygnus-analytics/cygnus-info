@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import ContactForm from "../sections/Contact/ContactForm";
 import Map from "../sections/Contact/Map";
@@ -14,7 +13,6 @@ const fadeUp = {
 export default function Contact() {
   return (
     <>
-      {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

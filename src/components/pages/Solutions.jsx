@@ -14,7 +14,6 @@ import AIML from "../sections/Solutions/AIML";
 import AppleScroll from "../ui/AppleScroll";
 import GetInTouch from "../sections/Solutions/GetInTouch";
 import { GoogleGeminiEffect } from "../ui/GoogleGeminEffect";
-import FiveGrid from "../sections/Home/FiveGrid";
 import CloudSolutionsNew from "../sections/Solutions/CloudSolutionsNew";
 import AIMLNew from "../sections/Solutions/AIMLNew"
 
@@ -48,7 +47,6 @@ export default function Solutions() {
         />
       </div>
 
-      {/* All Solutions Sections */}
       <Infrastructure />
       <CyberSecurity />
       <Storage />

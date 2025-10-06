@@ -8,9 +8,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-br from-blue-800 to-blue-950">
       <div className="mx-auto max-w-screen-xl space-y-8 px-4 pt-16 pb-40 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Left section */}
           <div>
-            {/* Logo with Next.js Image */}
             <Image src={logo} className="h-8 w-40" alt="Logo" />
 
             <p className="mt-4 max-w-xs text-white">
