@@ -24,8 +24,8 @@ const industrySlideData = [
   },
   {
     id: 2,
-    heading: "Oil and Gas",
-    slug: createSlug("Oil and Gas"),
+    heading: "Oil & Gas",
+    slug: createSlug("Oil & Gas"),
     image: OilAndGasBanner,
     description: "Driving energy innovation and global supply",
   },

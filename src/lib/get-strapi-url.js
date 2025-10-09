@@ -1,4 +1,3 @@
-export default function getStrapiURL(){
-  return
-    process.env.STRAPI_API_URL ?? "http://localhost:1337"
+export default function getStrapiURL() {
+  return process.env.STRAPI_API_URL ?? "http://localhost:1337"
 }

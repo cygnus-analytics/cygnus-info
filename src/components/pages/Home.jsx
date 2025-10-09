@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image"; // Import the Next.js Image component
+import Image from "next/image";
 import Banner from "../sections/Home/Banner";
 import Principles from "../sections/Home/FirstPageProducts.jsx";
 import IndustriesSlide from "../sections/Home/IndustriesSlide.jsx";

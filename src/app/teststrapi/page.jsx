@@ -1,25 +1,14 @@
+import { getHomePage } from "@/data/loaders";
+import { getGlobal } from "@/data/loaders";
 
-// async function loader(){
-//     const path = "/api/home-page";
-//     const BASE_URL = "http://localhost:1337";
-//     const url = new URL(path, BASE_URL);
+export default async function TestPage() {
 
-//     const response = await fetch(url);
-//     const data = await response.json();
-
-//     console.log(data);
-
-//     return {...data.data}
-// }
-
-// export default async function TestPage(){
-//     const data = await loader();
-//     console.log(data);
-
-//     return (
-//         <div>
-//             {data.title} <br/>
-//             {data.description}
-//         </div>
-//     )
-// }
+  const response = await getGlobal();
+  const data = response?.data || {};
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">{data.title}</h1>
+      <p className="text-gray-600">{data.description}</p>
+    </div>
+  );
+}

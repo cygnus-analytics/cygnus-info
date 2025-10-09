@@ -2,7 +2,7 @@ import Silk from "../../ui/Silk";
 
 const Banner = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-[calc(100vh-4.5rem)] w-full flex items-center justify-center overflow-hidden">
       {/* Silk background as canvas */}
       <div className="absolute inset-0 z-0">
         <Silk

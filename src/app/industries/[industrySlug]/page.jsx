@@ -33,7 +33,7 @@ const industries = [
     name: "Banking & Finance",
     slug: createSlug("Banking & Finance"),
     description: "In the ever-evolving world of banking and finance, innovation and security are key drivers of success. We offer comprehensive solutions designed to meet the unique needs of financial institutions, empowering them to thrive in today’s competitive landscape.",
-    banner: "/Banking/banner.jpg",
+    banner: "/industrypics/Banking/banner.jpg",
   },
   {
     name: "Oil & Gas",
@@ -111,7 +111,6 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* Banner */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selected.slug}
@@ -140,7 +139,6 @@ const Industries = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Description */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selected.slug + "-desc"}

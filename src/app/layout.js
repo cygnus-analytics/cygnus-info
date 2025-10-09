@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import MegaNavbar from "@/components/layout/MegaNavbar";
-import NavbarDemo from "@/components/layout/Navbar";
+import { getGlobal } from "@/data/loaders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,17 +23,18 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const globalData = await getGlobal();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MegaNavbar/>
+        <MegaNavbar headerData={globalData?.data?.Header} />
         <main className="pt-18"> 
           {children}
         </main>
-        <Footer/>
+        <Footer footerData={globalData?.data?.Footer} />
       </body>
     </html>
   );
