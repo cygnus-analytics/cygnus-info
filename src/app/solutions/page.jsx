@@ -1,16 +1,19 @@
 import Solutions from '@/components/pages/Solutions'
 import React from 'react'
+import { getSolutionsPage } from "@/data/loaders.js"
+
+export const revalidate = 600;
 
 export const metadata = {
   title: "Cygnus | Solutions",
 }
 
-const page = () => {
+export default async function Page() {
+  const solutionsPageData = await getSolutionsPage();
+
   return (
     <>
-    <Solutions/>
+    <Solutions solutionsData={solutionsPageData?.data}/>
     </>
   )
 }
-
-export default page

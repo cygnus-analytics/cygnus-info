@@ -1,9 +1,8 @@
-"use client";
+"use client"
 import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Industry Section Components
 import BankingFinance from "../../../components/sections/Industries/BankingFinance";
 import OilAndGas from "../../../components/sections/Industries/OilAndGas";
 import Education from "../../../components/sections/Industries/Education";
@@ -11,7 +10,6 @@ import Manufacturing from "../../../components/sections/Industries/Manufacturing
 import ConsumerSector from "../../../components/sections/Industries/ConsumerSector";
 import SmallMediumBusiness from "../../../components/sections/Industries/SmallMediumBusiness";
 
-// Banner Images
 import BankingBanner from "../../../../public/industrypics/Banking/banner.jpg";
 import OilAndGasBanner from "../../../../public/industrypics/Oil/banner.jpg";
 import EducationBanner from "../../../../public/industrypics/Education/classic-american-school-2025-02-11-21-11-14-utc-2.jpg";
@@ -19,7 +17,6 @@ import ManufacturingBanner from "../../../../public/industrypics/Manufacturing/i
 import ConsumerSectorBanner from "../../../../public/industrypics/ConsumerSector/banner.jpg";
 import SmallMediumBusinessBanner from "../../../../public/industrypics/Smb/banner.jpg";
 
-// Data and Component Mapping
 const createSlug = (name) => {
   return name
     .toLowerCase()
@@ -33,7 +30,7 @@ const industries = [
     name: "Banking & Finance",
     slug: createSlug("Banking & Finance"),
     description: "In the ever-evolving world of banking and finance, innovation and security are key drivers of success. We offer comprehensive solutions designed to meet the unique needs of financial institutions, empowering them to thrive in today’s competitive landscape.",
-    banner: "/industrypics/Banking/banner.jpg",
+    banner: BankingBanner,
   },
   {
     name: "Oil & Gas",
@@ -125,7 +122,7 @@ const Industries = () => {
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="absolute inset-0 bg-black/50 bg-opacity-40"></div>
           <div className="absolute inset-0 flex justify-center items-center px-4">
             <motion.h2
               initial={{ opacity: 0, scale: 0.95 }}
@@ -154,7 +151,6 @@ const Industries = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Section Component */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selected.slug + "-component"}

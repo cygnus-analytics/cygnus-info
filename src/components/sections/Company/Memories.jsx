@@ -1,38 +1,50 @@
-import mem1 from "../../../../public/team/mem1.jpg"
-import mem2 from "../../../../public/team/mem2.jpg"
-import mem3 from "../../../../public/team/mem3.jpg"
-import mem4 from "../../../../public/team/mem4.jpg"
-import mem5 from "../../../../public/team/mem5.jpg"
-import mem6 from "../../../../public/team/mem6.jpg"
-import mem7 from "../../../../public/team/mem7.jpg"
+"use client";
 
-const casepics = [
-    { src: "/team/mem1.jpg", alt: "AWS" },
-    { src: "/team/mem2.jpg", alt: "Hp" },
-    { src: "/team/mem3.jpg", alt: "Nvidia" },
-    { src: "/team/mem4.jpg", alt: "Cisco" },
-    { src: "/team/mem5.jpg", alt: "Hewlett" },
-    { src: "/team/mem6.jpg", alt: "Ibm" },
-    { src: "/team/mem7.jpg", alt: "Microsoft" },
-  ];
+import React from "react";
+import StrapiImage from "@/components/ui/StrapiImage";
 
-const Memories = () => {
+const LifeAtCygnus = ({ data }) => {
+  if (!data) return null;
+
+  const { title, description, image } = data;
+
   return (
-    <div className="relative overflow-hidden py-24 ">
-      <div className="flex animate-marquee space-x-8 md:space-x-12 lg:space-x-16">
-        {casepics.concat(casepics).map((photo, index) => (
-          <img
-            key={index}
-            src={photo.src}
-            alt={photo.alt}
-            className={`object-cover rounded-lg shadow-lg transition-transform duration-300 ${
-              index % 2 === 0 ? "translate-y-12" : "-translate-y-4"
-            } h-40 w-60 md:h-48 md:w-72 lg:h-56 lg:w-80`}
-          />
-        ))}
+    <section className="py-20">
+      {/* Title */}
+      <h2 className="text-center text-4xl font-bold mb-4">
+        {title}
+      </h2>
+
+      {/* Description */}
+      {description && (
+        <p className="text-center text-gray-600 mb-10 whitespace-pre-line">
+          {description}
+        </p>
+      )}
+
+      {/* Image Marquee */}
+      <div className="relative overflow-hidden py-10">
+        <div className="flex animate-marquee space-x-8 md:space-x-12 lg:space-x-16">
+          {image.map((photo, index) => (
+            <div
+              key={photo.id || index}
+              className={`object-cover rounded-lg shadow-lg transition-transform duration-300 ${
+                index % 2 === 0 ? "translate-y-12" : "-translate-y-4"
+              } h-40 w-60 md:h-48 md:w-72 lg:h-56 lg:w-80`}
+            >
+              <StrapiImage
+                src={photo}
+                alt={photo.name || "Life at Cygnus"}
+                width={320}
+                height={224}
+                className="object-cover rounded-lg h-full w-full"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Memories;
+export default LifeAtCygnus;

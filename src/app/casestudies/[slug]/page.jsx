@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React from "react";
 import { caseData } from "../../../../public/assets";
 import { motion } from "framer-motion";

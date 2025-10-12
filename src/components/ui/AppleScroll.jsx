@@ -1,9 +1,14 @@
 "use client";
+
 import { ContainerScroll } from "../ui/ContainerScroll";
 import { motion } from "framer-motion";
+import StrapiImage from "../ui/StrapiImage"; 
 
-export default function HeroScrollDemo() {
-  const hpcVideoPath = "../../../public/solutionpics/hpc.mp4";
+const HeroScrollDemo = ({ data }) => {
+  if (!data) return null;
+
+  const { title, description, image } = data;
+
   return (
     <div className="flex flex-col overflow-hidden">
       <ContainerScroll
@@ -17,9 +22,10 @@ export default function HeroScrollDemo() {
               className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-4"
             >
               <span className="font-bold mt-1 leading-none">
-                High Performance Computing Cluster
+                {title || "High Performance Computing Cluster"}
               </span>
             </motion.h2>
+
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -27,27 +33,32 @@ export default function HeroScrollDemo() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-md sm:text-md md:text-lg text-gray-600 max-w-4xl mx-auto mb-20"
             >
-              Accelerate complex computations and data-intensive workflows with
-              our High Performance Computing (HPC) Cluster solutions. Designed
-              for research institutions, engineering firms, and enterprises
-              handling large-scale simulations, analytics, and machine learning,
-              our HPC clusters deliver unmatched processing power and
-              scalability. Key features include:
+              {description?.trim() ||
+                "Accelerate complex computations and data-intensive workflows with our HPC Cluster solutions."}
             </motion.p>
           </>
         }
       >
-        <video
-          src={hpcVideoPath}
-          alt="hero"
-          width={1400}
-          height={720}
-          className="mx-auto rounded-2xl object-cover h-full w-full"
-          autoPlay
-          muted
-          loop
-        />
+        {image?.url?.endsWith(".mp4") ? (
+          <video
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`}
+            className="mx-auto rounded-2xl object-cover h-full w-full"
+            autoPlay
+            muted
+            loop
+          />
+        ) : (
+          <video
+            src="/solutionpics/hpc.mp4"
+            className="mx-auto rounded-2xl object-cover h-full w-full"
+            autoPlay
+            muted
+            loop
+          />
+        )}
       </ContainerScroll>
     </div>
   );
-}
+};
+
+export default HeroScrollDemo;

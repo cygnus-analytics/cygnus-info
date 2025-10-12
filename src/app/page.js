@@ -1,12 +1,15 @@
-import React from 'react'
-import Home from "../components/pages/Home.jsx"
+import React from "react";
+import Home from "../components/pages/Home.jsx";
+import { getHomePage } from "@/data/loaders.js";
 
-const page = () => {
+export const revalidate = 600;
+
+export default async function Page() {
+  const homePageData = await getHomePage();
+
   return (
     <div>
-      <Home/>
+      <Home homeData={homePageData?.data} />
     </div>
-  )
+  );
 }
-
-export default page

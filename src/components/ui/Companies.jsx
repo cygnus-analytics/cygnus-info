@@ -1,32 +1,25 @@
 "use client";
-
 import React from "react";
 import LogoLoop from "./LogoLoop";
 
-const logoBannerImages = [
-  { src: "/svgLogo/xerox.svg", alt: "Xerox" },
-  { src: "/svgLogo/aws.svg", alt: "AWS" },
-  { src: "/svgLogo/nvidia.svg", alt: "NVIDIA"},
-  { src: "/svgLogo/cisco.svg", alt: "Cisco" },
-  { src: "/svgLogo/hpe.svg", alt: "Hewlett Packard Enterprise"},
-  { src: "/svgLogo/ibm.svg", alt: "IBM" },
-  { src: "/svgLogo/microsoft1.svg", alt: "Microsoft" },
-  { src: "/svgLogo/netapp.svg", alt: "NetApp" },
-  { src: "/svgLogo/redhat.svg", alt: "Red Hat" },
-  { src: "/svgLogo/arcon.svg", alt: "Arcon" },
-];
+const Companies = ({ data }) => {
+  if (!data) return null;
 
-const Companies = () => {
+  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
+  const logoBannerImages = data.logos.map((logo) => ({
+    src: `${baseURL}${logo.url}`,
+    alt: logo.alternativeText || logo.name || "Company logo",
+  }));
+
   return (
     <div className="w-full flex flex-col md:flex-row justify-center items-center py-16 md:py-28">
-      {/* Text Section */}
       <div className="w-full md:w-2/6 px-6 md:px-10 mb-8 md:mb-0 text-center md:text-start">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-          In Partnership With Leading Pioneers
+          {data.title}
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600">
-          Collaborating with industry leaders, we guarantee top-tier IT solutions
-          to meet your business requirements.
+          {data.description}
         </p>
       </div>
 
@@ -36,7 +29,7 @@ const Companies = () => {
             logos={logoBannerImages}
             speed={150}
             direction="right"
-            logoHeight={60}   
+            logoHeight={60}
             gap={70}
             pauseOnHover
             scaleOnHover

@@ -10,7 +10,18 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-export default function Contact() {
+export default function Contact({ contact }) {
+  const {
+    title,
+    description,
+    email,
+    phone,
+    mapEmbedUrl,
+    addressDetails,
+    Location,
+    Links,
+  } = contact;
+
   return (
     <>
       <motion.section
@@ -26,28 +37,22 @@ export default function Contact() {
           className="max-w-4xl"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-4">
-            Get in Touch
+            {title}
           </h2>
-          <p className="text-base sm:text-lg md:text-xl font-light">
-            We’re here to help! Reach out to us for any inquiries, support, or
-            collaboration opportunities.
-          </p>
+          <p className="text-base sm:text-lg md:text-xl font-light">{description}</p>
         </motion.div>
       </motion.section>
 
-      <OfficeCards />
+      <OfficeCards locationsData={contact.Location}/>
 
-      {/* Map Section */}
       <section className="pt-6 sm:pt-10 bg-gray-100 px-4">
         <div className="w-full sm:w-10/12 mx-auto">
-          <Map />
+          <Map embedUrl={mapEmbedUrl} />
         </div>
       </section>
 
-      {/* Contact Details & Form */}
       <section className="h-auto bg-gray-100 py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-          {/* Contact Details */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -62,24 +67,28 @@ export default function Contact() {
               <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6">
                 Have any questions? Reach out to us.
               </p>
-              <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
-                📧 Email:{" "}
-                <a
-                  href="mailto:contact@corporate.com"
-                  className="text-blue-600 hover:underline"
-                >
-                  contact@corporate.com
-                </a>
-              </p>
-              <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
-                📞 Phone:{" "}
-                <a
-                  href="tel:+919876543210"
-                  className="text-blue-600 hover:underline"
-                >
-                  +91 98765 43210
-                </a>
-              </p>
+              {email && (
+                <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
+                  Email:{" "}
+                  <a
+                    href={`mailto:${email}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    {email}
+                  </a>
+                </p>
+              )}
+              {phone && (
+                <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
+                  Phone:{" "}
+                  <a
+                    href={`tel:${phone}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    {phone}
+                  </a>
+                </p>
+              )}
             </div>
 
             <div>
@@ -87,13 +96,7 @@ export default function Contact() {
                 Our Headquarters
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-xl">
-                CYGNUS INFORMATION SOLUTIONS PVT. LTD.
-                <br />
-                1005 Lodha Supremus,
-                <br />
-                Opp MTNL Building,
-                <br />
-                Saki Vihar Road, Andheri (E), Mumbai – 400072
+                {addressDetails}
               </p>
             </div>
 
@@ -102,20 +105,27 @@ export default function Contact() {
                 Follow Us
               </h2>
               <div className="flex justify-center space-x-4 sm:space-x-6">
-                {[FaLinkedin, FaTwitter, FaInstagram, FaFacebook].map(
-                  (Icon, i) => (
+                {Links.map((link, i) => {
+                  const IconMap = {
+                    Linkedin: FaLinkedin,
+                    Twitter: FaTwitter,
+                    Instagram: FaInstagram,
+                    Facebook: FaFacebook,
+                  };
+                  const Icon = IconMap[link.platform] || FaLinkedin;
+                  return (
                     <motion.a
                       key={i}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.9 }}
-                      href="#"
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Icon className="text-2xl sm:text-3xl text-blue-600" />
                     </motion.a>
-                  )
-                )}
+                  );
+                })}
               </div>
             </div>
           </motion.div>
