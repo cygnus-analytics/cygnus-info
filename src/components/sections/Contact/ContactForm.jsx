@@ -1,38 +1,33 @@
+"use client";
 import { useState } from "react";
+import { postContactForm } from "@/data/loaders";
 
 const ContactForm = () => {
   const [statusMessage, setStatusMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setStatusMessage("");
+
     const formData = new FormData(event.target);
-
-    formData.append("access_key", "fd76397b-5a95-4f73-b421-b13e6abdb121");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      });
+      const response = await postContactForm(data);
 
-      const res = await response.json();
-
-      if (res.success) {
-        setStatusMessage("Form submitted successfully!");
+      if (response && response.data) {
+        setStatusMessage(" Form submitted successfully!");
         event.target.reset();
       } else {
-        setStatusMessage("Failed to submit form. Please try again.");
+        setStatusMessage(" Failed to submit form. Please try again.");
       }
     } catch (error) {
-      setStatusMessage("An error occurred. Please try again later.");
-      console.error("Error:", error);
+      console.error("Error submitting form:", error);
+      setStatusMessage("⚠️ An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -121,9 +116,14 @@ const ContactForm = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full mt-6 py-3 bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-white font-semibold rounded-md shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        disabled={loading}
+        className={`w-full mt-6 py-3 font-semibold rounded-md shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          loading
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-white hover:shadow-lg transform hover:scale-[1.02]"
+        }`}
       >
-        Submit
+        {loading ? "Submitting..." : "Submit"}
       </button>
 
       {/* Status Message */}

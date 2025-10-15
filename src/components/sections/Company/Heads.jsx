@@ -18,7 +18,7 @@ export default function Heads({ data }) {
 
       {/* CTA Button */}
       <Link href={`/${data.ctaLink || "contact"}`}>
-        <button className="text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg font-medium rounded-lg text-sm px-6 py-2.5">
+        <button className="text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br shadow-lg font-medium rounded-3xl text-sm px-6 py-2.5">
           {data.ctaText}
         </button>
       </Link>

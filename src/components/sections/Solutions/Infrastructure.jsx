@@ -90,18 +90,17 @@ const Infrastructure = ({ data }) => {
                 isEven &&
                 service && (
                   <>
-                    {/* Service Icon */}
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.15 }}
                       transition={{ duration: 0.3 }}
                       className="flex justify-center items-center mb-6"
                     >
-                      <div className="flex justify-center items-center rounded-full w-28 h-28 sm:w-36 sm:h-36 border border-gray-300 transition-transform duration-300 group-hover:scale-105">
-                        <div className="flex justify-center items-center rounded-full w-16 h-16 sm:w-20 sm:h-20 border border-gray-200 transition-transform duration-300 group-hover:scale-110">
+                      <div className="flex justify-center items-center rounded-full w-28 h-28 sm:w-36 sm:h-36 border border-gray-200 transition-transform duration-300 group-hover:scale-105 bg-neutral-100 hover:bg-blue-100">
+                        <div className="flex justify-center items-center rounded-full w-16 h-16 sm:w-20 sm:h-20 border border-gray-200 transition-transform duration-300 group-hover:scale-110 bg-white">
                           <StrapiImage
                             src={service.icon}
                             alt={service.icon?.alternativeText || service.title}
-                            className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-125"
+                            className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-125"
                             width={32}
                             height={32}
                           />
@@ -109,7 +108,6 @@ const Infrastructure = ({ data }) => {
                       </div>
                     </motion.div>
 
-                    {/* Title & Description */}
                     <h3 className="text-lg sm:text-xl font-semibold text-center mb-2">
                       {service.title}
                     </h3>

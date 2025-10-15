@@ -77,7 +77,7 @@ export const Menu = ({ setActive, children }) => {
       <div>
         <a
           href="/contact"
-          className="hidden lg:block text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg shadow-blue-500/50 font-medium rounded-2xl text-sm px-5 py-2.5 text-center"
+          className="hidden lg:block text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50 font-medium rounded-2xl text-sm px-5 py-2.5 text-center"
         >
           Contact Us
         </a>

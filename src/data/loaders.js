@@ -1,4 +1,3 @@
-import Infrastructure from "@/components/sections/Solutions/Infrastructure";
 import { fetchAPI } from "@/lib/api";
 import getStrapiURL from "@/lib/get-strapi-url";
 import qs from "qs";
@@ -407,7 +406,7 @@ export async function getIndustriesPage() {
     encodeValuesOnly: true,
   });
   const BASE_URL = getStrapiURL();
-  const path = `/api/indsutries?${queryString}`;
+  const path = `/api/industries?${queryString}`;
   const url = new URL(path, BASE_URL);
 
   return await fetchAPI(url.href,{ 
@@ -441,4 +440,68 @@ export async function getCaseStudyPage() {
     cache: "force-cache",
     next: { revalidate: 600 },
      });
+}
+
+export async function postContactForm(formData) {
+  const BASE_URL = getStrapiURL();
+  const path = `/api/contact-forms`;
+  const url = new URL(path, BASE_URL);
+
+  try {
+    const res = await fetch(url.href, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to submit contact form");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    throw error;
+  }
+}
+
+
+export async function postJobForm(formData) {
+  const BASE_URL = getStrapiURL();
+  const path = `/api/job-applications`;
+  const url = new URL(path, BASE_URL);
+
+  const body = {
+    data: {
+      name: formData.name,
+      email: formData.email,
+      contact: formData.contact,
+      location: formData.location,
+    },
+  };
+
+  try {
+    const res = await fetch(url.href, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) throw new Error("Failed to submit job form");
+    return await res.json();
+  } catch (error) {
+    console.error("Error submitting job form:", error);
+    throw error;
+  }
 }

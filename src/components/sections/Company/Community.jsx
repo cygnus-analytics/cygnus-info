@@ -15,7 +15,6 @@ const Community = ({ data }) => {
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto text-center px-6">
-        {/* Optional image if Vision includes one */}
         {image && (
           <div className="mb-10 flex justify-center">
             <StrapiImage

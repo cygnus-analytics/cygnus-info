@@ -2,27 +2,38 @@
 
 import { LayoutTextFlip } from "../ui/LayoutFlipText";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const VideoBanner = ({ data }) => {
+  const videoRef = useRef(null);
+
   if (!data) return null;
 
-  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
-  const videoSrc = data.backgroundVideo?.url
-    ? `${baseURL}${data.backgroundVideo.url}`
-    : "/fallback.mp4";
+  const cloudinaryUrl = "https://res.cloudinary.com/duhhwugqb/video/upload/v1760436249/mov_copy_3b8222aba3.mp4";
+
+  useEffect(() => {
+    // Force video to play on mount
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.error("Video autoplay failed:", err);
+      });
+    }
+  }, []);
 
   return (
     <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
       {/* Background Video */}
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src={videoSrc}
-        autoPlay
         muted
         loop
         playsInline
-      />
+        preload="auto"
+      >
+        <source src={cloudinaryUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40 md:bg-black/30 lg:bg-black/20"></div>

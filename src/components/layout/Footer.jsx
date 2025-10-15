@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
+import StrapiImage from "../ui/StrapiImage";
 
 const Footer = ({ footerData }) => {
   if (!footerData) return null;
 
-  const { description, copyright, links, linkGroup } = footerData;
+  const { description, copyright, links, linkGroup, logo } = footerData;
 
-  // Helper to map platform to icon
   const getSocialIcon = (platform) => {
     switch (platform?.toLowerCase()) {
       case "linkedin":
@@ -22,17 +22,19 @@ const Footer = ({ footerData }) => {
     }
   };
 
+  const logoUrl = logo?.image?.url;
+  const logoAlt = logo?.logoText;
+
   return (
     <footer className="bg-gradient-to-br from-blue-800 to-blue-950">
       <div className="mx-auto max-w-screen-xl space-y-8 px-4 pt-16 pb-40 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Left section */}
           <div>
-            {/* Logo */}
-            {footerData?.logo?.url ? (
-              <Image
-                src={footerData.logo.url}
-                alt={footerData.logo.logoText || "Logo"}
+            {logoUrl ? (
+              <StrapiImage
+                src={logoUrl}
+                alt={logoAlt}
                 width={160}
                 height={60}
                 className="h-8 w-40"

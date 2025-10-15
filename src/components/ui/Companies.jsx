@@ -7,10 +7,14 @@ const Companies = ({ data }) => {
 
   const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
-  const logoBannerImages = data.logos.map((logo) => ({
-    src: `${baseURL}${logo.url}`,
-    alt: logo.alternativeText || logo.name || "Company logo",
-  }));
+  const logoBannerImages = data.logos.map((logo) => {
+    const isFullUrl = logo.url?.startsWith('http://') || logo.url?.startsWith('https://');
+    
+    return {
+      src: isFullUrl ? logo.url : `${baseURL}${logo.url}`,
+      alt: logo.alternativeText || logo.name || "Company logo",
+    };
+  });
 
   return (
     <div className="w-full flex flex-col md:flex-row justify-center items-center py-16 md:py-28">

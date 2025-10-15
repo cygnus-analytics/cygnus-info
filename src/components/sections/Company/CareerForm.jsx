@@ -1,36 +1,27 @@
+"use client";
+
 import { useState } from "react";
-import { Form, Input, Upload, Button } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Input, Button } from "antd";
+import { postJobForm } from "@/data/loaders";
 
 const CareerForm = ({ selectedJob }) => {
   const [statusMessage, setStatusMessage] = useState("");
 
   const onFinish = async (values) => {
-    const formData = new FormData();
-    formData.append("access_key", "fd76397b-5a95-4f73-b421-b13e6abdb121");
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("contact", values.contact);
-    formData.append("location", values.location);
-    formData.append("position", selectedJob);
-    formData.append("file", values.file?.file?.originFileObj);
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
+      const formData = {
+        name: values.name,
+        email: values.email,
+        contact: values.contact,
+        location: values.location,
+      };
 
-      const res = await response.json();
-
-      if (res.success) {
-        setStatusMessage("Application submitted successfully!");
-      } else {
-        setStatusMessage("Failed to submit. Please try again.");
-      }
+      const response = await postJobForm(formData);
+      console.log("Strapi response:", response);
+      setStatusMessage("Application submitted successfully!");
     } catch (error) {
+      console.error("Error submitting job form:", error);
       setStatusMessage("An error occurred. Please try again later.");
-      console.error("Error:", error);
     }
   };
 
@@ -39,6 +30,7 @@ const CareerForm = ({ selectedJob }) => {
       <h2 className="text-xl font-semibold text-center mb-4">{selectedJob}</h2>
 
       <Form layout="vertical" onFinish={onFinish}>
+        {/* Full Name */}
         <Form.Item
           label="Full Name"
           name="name"
@@ -47,20 +39,19 @@ const CareerForm = ({ selectedJob }) => {
           <Input placeholder="Enter your full name" />
         </Form.Item>
 
+        {/* Contact Number */}
         <Form.Item
           label="Contact Number"
           name="contact"
           rules={[
             { required: true, message: "Please enter your contact number" },
-            {
-              pattern: /^[0-9]{10,15}$/,
-              message: "Enter a valid contact number",
-            },
+            { pattern: /^[0-9]{10,15}$/, message: "Enter a valid contact number" },
           ]}
         >
           <Input placeholder="Enter your phone number" />
         </Form.Item>
 
+        {/* Email */}
         <Form.Item
           label="Email Address"
           name="email"
@@ -72,6 +63,7 @@ const CareerForm = ({ selectedJob }) => {
           <Input placeholder="Enter your email" />
         </Form.Item>
 
+        {/* Location */}
         <Form.Item
           label="Location"
           name="location"
@@ -80,24 +72,14 @@ const CareerForm = ({ selectedJob }) => {
           <Input placeholder="Enter your location" />
         </Form.Item>
 
-        <Form.Item
-          label="Upload Resume"
-          name="file"
-          rules={[{ required: true, message: "Please upload your resume" }]}
-          valuePropName="file"
-          getValueFromEvent={(e) => e}
-        >
-          <Upload beforeUpload={() => false} maxCount={1}>
-            <Button icon={<UploadOutlined />}>Click to Upload</Button>
-          </Upload>
-        </Form.Item>
-
+        {/* Submit */}
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
             Submit Application
           </Button>
         </Form.Item>
 
+        {/* Status message */}
         {statusMessage && (
           <p className="text-center text-sm font-semibold text-gray-700">
             {statusMessage}

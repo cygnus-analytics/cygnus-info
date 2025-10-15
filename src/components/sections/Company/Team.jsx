@@ -33,8 +33,8 @@ const Team = ({ data }) => {
                   key={img.id || index}
                   src={img}
                   alt={img.name || `Team member ${index + 1}`}
-                  width={176} // w-44
-                  height={224} // h-56
+                  width={576} 
+                  height={624}
                   className={`w-44 h-56 rounded-2xl object-cover mx-auto ${
                     index === 0 || index === 2 ? "md:mt-20" : ""
                   } ${index === 4 ? "md:-mt-20" : ""}`}

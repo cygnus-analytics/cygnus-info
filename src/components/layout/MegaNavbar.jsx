@@ -2,6 +2,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import StrapiImage from "../ui/StrapiImage";
 
 const MegaNavbar = ({ headerData }) => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -11,6 +12,14 @@ const MegaNavbar = ({ headerData }) => {
   const menus = headerData?.menus || [];
   const logoText = headerData?.logo?.logoText || "Logo";
   const cta = headerData?.cta;
+
+  const capitalizeWords = (str) => {
+    if (!str) return "";
+    return str
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  };
 
   const DropdownItem = ({ title, description, href }) => (
     <li>
@@ -73,8 +82,7 @@ const MegaNavbar = ({ headerData }) => {
                       activeMenu === menu.title ? "text-blue-600" : ""
                     }`}
                   >
-                    {menu.title.charAt(0).toUpperCase() +
-                      menu.title.slice(1).toLowerCase()}
+                    {capitalizeWords(menu.title)}
                   </Link>
 
                   {menu.hasDropdown &&
@@ -100,7 +108,7 @@ const MegaNavbar = ({ headerData }) => {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 cursor-pointer"
           aria-controls="mobile-menu"
           aria-expanded={menuOpen}
         >
@@ -128,34 +136,43 @@ const MegaNavbar = ({ headerData }) => {
             .filter((menu) => menu?.title)
             .map((menu) => (
               <li key={menu.id} className="relative">
-                <button
-                  className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100"
-                  onClick={() =>
-                    setActiveMenu(
-                      activeMenu === menu.title ? null : menu.title
-                    )
-                  }
-                >
-                  {menu.title}
+                <div className="flex items-center">
+                  <Link
+                    href={menu.href || "#"}
+                    className="flex-1 py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100"
+                  >
+                    {capitalizeWords(menu.title)}
+                  </Link>
+                  
                   {menu.hasDropdown && (
-                    <svg
-                      className={`w-3 h-3 ml-2 transition-transform duration-200 ${
-                        activeMenu === menu.title ? "rotate-180" : ""
-                      }`}
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setActiveMenu(
+                          activeMenu === menu.title ? null : menu.title
+                        );
+                      }}
+                      className="p-2 text-gray-900 hover:bg-gray-100 rounded-md"
                     >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
+                      <svg
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          activeMenu === menu.title ? "rotate-180" : ""
+                        }`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </button>
                   )}
-                </button>
+                </div>
 
                 {menu.hasDropdown && (
                   <div
@@ -166,7 +183,7 @@ const MegaNavbar = ({ headerData }) => {
                     }`}
                   >
                     <ul className="p-2 space-y-1">
-                      {menu.dropdownItems.map((item, index) => (
+                      {menu.dropdownItems?.map((item, index) => (
                         <DropdownItem key={index} {...item} />
                       ))}
                     </ul>

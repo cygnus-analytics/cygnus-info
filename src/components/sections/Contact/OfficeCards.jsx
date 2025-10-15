@@ -9,7 +9,7 @@ export default function Offices({ locationsData }) {
     return (
       <div className="w-full h-72 perspective">
         <div className="relative w-full h-full rounded-2xl shadow-lg transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180 cursor-pointer">
-          <div className="absolute w-full h-full rounded-2xl overflow-hidden backface-hidden">
+          <div className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden">
             <StrapiImage
               src={location.image}
               alt={`${location.title}`}
@@ -24,9 +24,9 @@ export default function Offices({ locationsData }) {
           <div
             className="
               absolute w-full h-full rounded-2xl
-              bg-gradient-to-br from-blue-300 to-blue-200
+              bg-gradient-to-br from-neutral-100 to-neutral-100
               flex items-center justify-center p-6 text-center
-              text-blue-800 font-semibold
+              text-blue-900 font-semibold
               text-base sm:text-lg md:text-xl
               whitespace-pre-line backface-hidden rotate-y-180
             "

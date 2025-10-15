@@ -18,7 +18,6 @@ const TeamMembers = ({ data }) => {
 
   const teamMembers = data.Photos;
 
-  // Shapes array — keeps same design sequence
   const shapes = [
     "rounded-l-full",
     "rounded-t-full",
@@ -28,7 +27,7 @@ const TeamMembers = ({ data }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-blue-100 py-16 px-4">
+    <div className=" bg-blue-100 py-16 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

@@ -28,6 +28,7 @@ const cardVariants = {
 };
 
 const BankingFinance = () => {
+  
   const cardData = [
     {
       title: "Cybersecurity Solutions",

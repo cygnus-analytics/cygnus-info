@@ -35,7 +35,7 @@ export default function CaseStudiesCard({ params }) {
 
   return (
     <div className="mx-auto bg-white pb-24">
-      {/* Banner with Heading */}
+      {/* Banner with Heading */}x
       <div className="relative w-full">
         <motion.img
           src={card.image}
