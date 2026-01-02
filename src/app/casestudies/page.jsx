@@ -6,6 +6,8 @@ export const metadata = {
   title: "Cygnus | Case Studies",
 }
 
+export const revalidate = 604800;
+
 export default async function Page() {
   const caseStudyData = await getCaseStudyPage();
 

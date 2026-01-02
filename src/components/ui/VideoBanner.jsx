@@ -1,37 +1,31 @@
 "use client";
-
+import React from "react";
 import { LayoutTextFlip } from "../ui/LayoutFlipText";
 import { motion } from "motion/react";
-import React, { useEffect, useRef } from "react";
 
-const VideoBanner = ({ data }) => {
-  const videoRef = useRef(null);
-
-  if (!data) return null;
-
-  const cloudinaryUrl = "https://res.cloudinary.com/duhhwugqb/video/upload/v1760436249/mov_copy_3b8222aba3.mp4";
-
-  useEffect(() => {
-    // Force video to play on mount
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.error("Video autoplay failed:", err);
-      });
-    }
-  }, []);
+const VideoBanner = () => {
+  
+  const title = "Cygnus";
+  const rotatingWords = [
+    "Infrastructure",
+    "Cybersecurity",
+    "Cloud Solutions",
+    "Networking",
+    "Storage Solutions",
+  ];
+  const description = "Accelerating enterprises with high-performance infrastructure and future-ready digital ecosystems.";
 
   return (
-    <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
+    <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden bg-black">
       {/* Background Video */}
       <video
-        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
         muted
-        loop
         playsInline
-        preload="auto"
+        preload="none"
       >
-        <source src={cloudinaryUrl} type="video/mp4" />
+        <source src="/bgimages/mov.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -41,22 +35,26 @@ const VideoBanner = ({ data }) => {
       {/* Content */}
       <div className="relative z-10 flex h-full w-full items-center justify-center text-center text-white px-4">
         <div className="max-w-4xl">
-          <motion.div className="mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-6"
+          >
             <LayoutTextFlip
-              text={data.title || "Cygnus"}
-              words={[
-                "Infrastructure",
-                "Cybersecurity",
-                "AI Solutions",
-                "Innovation",
-              ]}
+              text={title}
+              words={rotatingWords}
             />
           </motion.div>
 
-          <p className="text-sm sm:text-sm md:text-md lg:text-lg xl:text-xl font-medium max-w-2xl mx-auto">
-            {data.description ||
-              "Accelerating enterprises with high-performance infrastructure and future-ready digital ecosystems."}
-          </p>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-sm sm:text-sm md:text-md lg:text-lg xl:text-xl font-medium max-w-2xl mx-auto"
+          >
+            {description}
+          </motion.p>
         </div>
       </div>
     </section>

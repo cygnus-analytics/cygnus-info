@@ -8,7 +8,7 @@ const DiagonalDiv = ({ image, title, description, invert = false }) => {
       }`}
     >
       <div className="md:w-1/2 h-full w-full bg-linear-to-b from-blue-300 to-blue-500">
-        <img
+        <img loading="lazy"
           src={image}
           alt={title}
           className="w-full h-full object-cover rounded-xl"

@@ -77,14 +77,14 @@ export default function IndustriesClient({ industries, selected }) {
         >
           <div className="absolute inset-0 bg-black/50 bg-opacity-40"></div>
           <div className="absolute inset-0 flex justify-center items-center px-4">
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
               className="text-center text-white font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-wide leading-tight"
             >
               {selected?.name}
-            </motion.h2>
+            </motion.h1>
           </div>
         </motion.div>
       </AnimatePresence>

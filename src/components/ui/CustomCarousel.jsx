@@ -54,9 +54,9 @@ const CustomCarousel = ({ data }) => {
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 1.0 }}
               >
-                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold mb-2">
+                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold mb-2">
                   {slide.heading}
-                </h2>
+                </h1>
                 <p className="text-white text-md sm:text-lg md:text-lg max-w-xl mb-4">
                   {slide.subHeading}
                 </p>

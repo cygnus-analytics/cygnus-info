@@ -10,21 +10,19 @@ const LifeAtCygnus = ({ data }) => {
 
   return (
     <section className="py-20">
-      {/* Title */}
-      <h2 className="text-center text-4xl font-bold mb-4">{title}</h2>
-
-      {/* Description */}
-      {description && (
-        <p className="text-center text-gray-600 mb-10 whitespace-pre-line">
-          {description}
-        </p>
-      )}
+      <div className="px-4 sm:px-4 md:px-5">
+        <h2 className="text-center text-3xl sm:text-3xl md:text-4xl lg:text-4xl font-bold mb-4">{title}</h2>
+        {description && (
+          <p className="text-center text-neutral-600 mb-10">
+            {description}
+          </p>
+        )}
+      </div>
 
       {/* Image Marquee */}
       <div className="relative overflow-hidden py-10">
         <div className="flex marquee space-x-8 md:space-x-12 lg:space-x-16">
           {image.map((photo, index) => {
-
             const width = photo?.width || 400;
             const height = photo?.height || 300;
 

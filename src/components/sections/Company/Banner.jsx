@@ -1,4 +1,6 @@
-import Silk from "../../ui/Silk";
+import dynamic from "next/dynamic";
+
+const Silk = dynamic(() => import("../../ui/Silk"), { ssr: false });
 
 const Banner = ({ data }) => {
 
@@ -19,11 +21,11 @@ const Banner = ({ data }) => {
       <div className="absolute inset-0 bg-black/10" />
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-3xl text-white">
-        <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+      <div className="relative z-20 text-center px-5 text-white">
+        <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight mx-auto max-w-3xl">
           {title}
-        </h2>
-        <p className="text-lg sm:text-xl mb-8 text-gray-200">
+        </h1>
+        <p className="text-md sm:text-md md:text-lg lg:text-lg text-neutral-200 mx-auto max-w-4xl">
           {description}
         </p>
       </div>

@@ -23,15 +23,15 @@ const Career = ({ data }) => {
 
   return (
     <>
-      <div className="py-20 bg-gray-50">
-        <div className="mx-auto max-w-5xl px-4">
+      <div className="py-10">
+        <div className="mx-auto max-w-5xl">
           {/* Title */}
-          <h2 className="text-center font-bold text-4xl mb-4">
+          <h1 className="text-center font-bold text-3xl sm:text-3xl md:text-4xl lg:text-4xl mb-4">
             {data.title}
-          </h2>
+          </h1>
 
           {/* Description */}
-          <p className="text-center text-gray-600 text-lg mb-12">
+          <p className="text-center text-neutral-600 text-md sm:text-md md:text-lg lg:text-lg mb-12 max-w-4xl mx-auto">
             {data.description}
           </p>
 
@@ -45,16 +45,16 @@ const Career = ({ data }) => {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                className="cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out py-4 w-full bg-white border border-gray-300 h-32 rounded-xl flex justify-between items-center px-8"
+                className="cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out py-4 w-full bg-neutral-50 border border-neutral-300 h-32 rounded-xl flex justify-between items-center px-8"
                 onClick={() => handleOpenForm(job.title)}
               >
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-lg font-semibold">{job.title}</h3>
-                  <p className="text-gray-600">
+                  <h3 className="text-md sm:text-md md:text-lg lg:text-lg font-semibold">{job.title}</h3>
+                  <p className="text-neutral-600 text-sm sm:text-sm md:text-md lg:text-md">
                     {job.type} | {job.level}
                   </p>
                 </div>
-                <IoIosAdd className="text-gray-600 hover:text-blue-800 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                <IoIosAdd className="text-neutral-600 hover:text-blue-800 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
               </motion.div>
             ))}
           </div>

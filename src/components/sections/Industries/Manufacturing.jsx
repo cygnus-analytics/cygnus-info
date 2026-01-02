@@ -99,7 +99,7 @@ const Manufacturing = () => {
 
             {/* Image */}
             <div className="w-full aspect-[4/3] rounded-[24px] border border-[#E8E8E8] overflow-hidden">
-              <img
+              <img loading="lazy"
                 src={card.image}
                 alt={card.title}
                 className="w-full h-full object-cover"

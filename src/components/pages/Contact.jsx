@@ -36,9 +36,9 @@ export default function Contact({ contact }) {
           animate="visible"
           className="max-w-4xl"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-4">
             {title}
-          </h2>
+          </h1>
           <p className="text-base sm:text-lg md:text-xl font-light">{description}</p>
         </motion.div>
       </motion.section>

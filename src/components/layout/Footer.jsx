@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 import StrapiImage from "../ui/StrapiImage";
@@ -27,27 +26,26 @@ const Footer = ({ footerData }) => {
 
   return (
     <footer className="bg-gradient-to-br from-blue-800 to-blue-950">
-      <div className="mx-auto max-w-screen-xl space-y-8 px-4 pt-16 pb-40 sm:px-6 lg:space-y-16 lg:px-8">
+      <div className="mx-auto max-w-screen-xl space-y-8 pt-16 pb-30 lg:space-y-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Left section */}
           <div>
-            {logoUrl ? (
-              <StrapiImage
-                src={logoUrl}
-                alt={logoAlt}
-                width={160}
-                height={60}
-                className="h-8 w-40"
-              />
-            ) : (
-              <p className="text-white font-semibold text-xl">Cygnus</p>
-            )}
+            <StrapiImage
+              src={logoUrl}
+              alt={logoAlt}
+              width={160}
+              height={60}
+              className="h-8 w-48"
+            />
 
-            {/* Description */}
-            <p className="mt-4 max-w-xs text-white">{description}</p>
+            <p className="mt-4 max-w-xs text-white pl-3">
+              CYGNUS INFORMATION SOLUTIONS PVT. LTD.
+              <br />
+              Registered Office - 1005 Lodha Supremus, Opp MTNL Building, Saki
+              Vihar Road, Andheri (E), Mumbai – 400072.
+            </p>
 
             {/* Social icons */}
-            <ul className="mt-8 flex gap-6">
+            <ul className="mt-8 flex gap-6 pl-3">
               {links?.map((item) => {
                 const Icon = getSocialIcon(item.platform);
                 return (
@@ -70,7 +68,7 @@ const Footer = ({ footerData }) => {
           </div>
 
           {/* Right section with dynamic link groups */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 px-3">
             {linkGroup?.map((group) => (
               <div key={group.id}>
                 <p className="font-semibold text-white">{group.title}</p>
@@ -79,7 +77,7 @@ const Footer = ({ footerData }) => {
                     <li key={linkItem.id}>
                       <Link
                         href={linkItem.href || "#"}
-                        className="text-gray-200 transition hover:opacity-75"
+                        className="text-neutral-200 transition hover:opacity-75"
                       >
                         {linkItem.text}
                       </Link>
@@ -91,8 +89,24 @@ const Footer = ({ footerData }) => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <p className="text-xs text-white">{copyright}</p>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white">
+          <p className="text-center sm:text-left">
+            &copy; 2025. Cygnus Information Solutions Pvt. Ltd.<br/> All rights
+            reserved.
+          </p>
+
+          <div className="flex gap-6 flex-wrap justify-center sm:justify-end">
+            <p className="transition hover:text-neutral-200 cursor-pointer">
+              Terms and Conditions
+            </p>
+            <p className="transition hover:text-neutral-200 cursor-pointer">
+              Privacy Statement
+            </p>
+            <p className="transition hover:text-neutral-200 cursor-pointer">
+              Cookie Policy
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

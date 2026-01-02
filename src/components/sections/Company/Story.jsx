@@ -7,7 +7,7 @@ const Story = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4 sm:px-6">
           {/* Image */}
           <div>
-            <img
+            <img loading="lazy"
               src={collage}
               alt="Collage"
               className="rounded-lg w-full h-auto object-cover"

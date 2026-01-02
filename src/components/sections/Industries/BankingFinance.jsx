@@ -33,7 +33,7 @@ const BankingFinance = () => {
     {
       title: "Cybersecurity Solutions",
       description:
-        "Partnered with Arcon, we deliver advanced cybersecurity services to safeguard critical financial data, ensure regulatory compliance, and protect against emerging cyber threats.",
+        "Partnered with world's best OEMs, we deliver advanced cybersecurity services to safeguard critical financial data, ensure regulatory compliance, and protect against emerging cyber threats.",
       image: "/industrypics/Banking/cs.jpg",
       icon: "/industrypics/Banking/7.svg",
     },
@@ -103,7 +103,7 @@ const BankingFinance = () => {
               }}
             >
               <div className="absolute bottom-[-2rem] w-16 h-16 sm:w-20 sm:h-20 bg-[#2f48a5] rounded-full shadow-lg flex justify-center items-center">
-                <img
+                <img loading="lazy"
                   src={card.icon}
                   alt={`${card.title} Icon`}
                   className="w-10 h-10 sm:w-12 sm:h-12"

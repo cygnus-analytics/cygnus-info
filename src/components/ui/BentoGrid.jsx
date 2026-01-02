@@ -5,7 +5,7 @@ export const BentoGrid = ({ className, children }) => {
     <div
       className={cn(
         "mx-auto grid max-w-7xl gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-6",
-        "auto-rows-[minmax(200px,auto)] sm:auto-rows-[minmax(250px,auto)] md:auto-rows-[16rem]",
+        "auto-rows-[minmax(200px,auto)] sm:auto-rows-[minmax(250px,auto)] md:auto-rows-[16rem] p-3 sm:px-3 md:px-4 lg:px-0 ",
         className
       )}
     >
@@ -32,12 +32,12 @@ export const BentoGridItem = ({
 
       <div className="relative z-10 p-4 transition-transform duration-200 group-hover/bento:translate-x-2">
         {title && (
-          <div className="font-sans text-xl sm:text-2xl font-bold text-black drop-shadow-lg">
+          <div className="text-xl sm:text-2xl font-bold text-black drop-shadow-lg">
             {title}
           </div>
         )}
         {description && (
-          <div className="mt-2 font-sans text-sm sm:text-md text-gray-800 drop-shadow-md">
+          <div className="mt-2 text-sm sm:text-md text-gray-800 drop-shadow-md">
             {description}
           </div>
         )}

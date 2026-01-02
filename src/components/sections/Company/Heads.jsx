@@ -7,12 +7,12 @@ export default function Heads({ data }) {
   return (
     <section className="bg-blue-100 py-20 text-center">
       {/* Title */}
-      <h2 className="text-4xl font-bold text-blue-900 mb-4">
+      <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-black mb-4">
         {data.title}
       </h2>
 
       {/* Description */}
-      <p className="text-gray-600 leading-relaxed mb-8">
+      <p className="text-neutral-600 leading-relaxed mb-10">
         {data.description}
       </p>
 

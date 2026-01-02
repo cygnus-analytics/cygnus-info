@@ -12,7 +12,6 @@ export const Card = React.memo(({ card, index, hovered, setHovered }) => (
       hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
     )}
   >
-    {/* ✅ Use StrapiImage if image object exists */}
     {card.image ? (
       <StrapiImage
         src={card.image}
@@ -21,7 +20,7 @@ export const Card = React.memo(({ card, index, hovered, setHovered }) => (
         fill
       />
     ) : (
-      <img
+      <img loading="lazy"
         src={card.src}
         alt={card.title}
         className="object-cover absolute inset-0"

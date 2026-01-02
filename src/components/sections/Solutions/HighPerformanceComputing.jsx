@@ -1,4 +1,3 @@
-import hpc from "../../assets/solutionpics/hpc.mp4";
 
 const HighPerformanceComputing = () => {
   return (
@@ -10,7 +9,7 @@ const HighPerformanceComputing = () => {
 
         <div className="relative w-[1280px] h-[501px] mx-auto mt-12">
           <video
-            src={hpc}
+            src="../../../../public/solutionpics/hpc.mp4"
             autoPlay
             loop
             muted

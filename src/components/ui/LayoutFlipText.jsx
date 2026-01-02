@@ -31,7 +31,7 @@ export const LayoutTextFlip = ({
       {/* Animated rotating words */}
       <motion.span
         layout
-        className="relative rounded-md bg-white/90 px-2 py-1 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-black shadow-sm shadow-black/10 drop-shadow-lg sm:px-3 sm:py-1.5 md:px-4 md:py-2"
+        className="relative rounded-md bg-white/90 px-2 py-1 text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-black shadow-sm shadow-black/10 drop-shadow-lg sm:px-3 sm:py-1.5 md:px-4 md:py-2"
       >
         <AnimatePresence mode="popLayout">
           <motion.span

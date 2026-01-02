@@ -8,14 +8,14 @@ export default function CaseStudies({ caseStudyData }) {
 
   return (
     <div className="pt-10 pb-20 px-4 sm:px-6 md:px-10 mx-auto max-w-7xl">
-      <motion.h2
+      <motion.h1
         className="text-center text-3xl md:text-5xl font-bold mb-4"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
         Case Studies
-      </motion.h2>
+      </motion.h1>
 
       <motion.p
         className="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto"
@@ -63,6 +63,9 @@ export default function CaseStudies({ caseStudyData }) {
             </motion.div>
           </Link>
         ))}
+      </div>
+      <div className="px-4 sm:px-6 md:px-10">
+        <h2 className="mt-18 text-2xl sm:text-2xl md:text-3xl lg:text:4xl text-center font-semibold ">And many more...</h2>
       </div>
     </div>
   );

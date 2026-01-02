@@ -1,15 +1,14 @@
 "use client";
-
-import { Linkedin } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import StrapiImage from "@/components/ui/StrapiImage";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" },
   }),
 };
 
@@ -18,104 +17,112 @@ const TeamMembers = ({ data }) => {
 
   const teamMembers = data.Photos;
 
-  const shapes = [
-    "rounded-l-full",
-    "rounded-t-full",
-    "rounded-b-full",
-    "rounded-full",
-    "rounded-r-full",
-  ];
+  const firstRow = teamMembers.slice(0, 4); 
+  const secondRow = teamMembers.slice(4);
 
   return (
-    <div className=" bg-blue-100 py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+    <section className="pt-20 pb-10">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-between items-start mb-16"
+          className="mb-10"
         >
-          <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-bold ">
-              {data?.title}
-            </h2>
-          </div>
+          <h2 className="text-3xl md:text-4xl lg:5xl font-bold text-neutral-900 mb-2">
+            {data?.title}
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl">
+            Meet the team behind Cygnus success
+          </p>
         </motion.div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-          {teamMembers.map((member, index) => (
+        {/* First Row (Always 4 items) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+          {firstRow.map((member, index) => (
             <motion.div
               key={member.id}
-              className={`md:col-span-4 flex justify-center ${
-                index === 3
-                  ? "md:col-start-3"
-                  : index === 4
-                  ? "md:col-start-7"
-                  : ""
-              }`}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
+              viewport={{ once: true }}
               custom={index}
-              viewport={{ once: true, amount: 0.2 }}
             >
-              <TeamMemberCard
-                member={member}
-                shape={shapes[index % shapes.length]}
-                size="large"
-              />
+              <TeamMemberCard member={member} />
             </motion.div>
           ))}
         </div>
+
+        {secondRow.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            <div className="hidden lg:block"></div>
+
+            {/* TWO MEMBERS IN CENTER */}
+            {secondRow.map((member, index) => (
+              <motion.div
+                key={member.id}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={index}
+              >
+                <TeamMemberCard member={member} />
+              </motion.div>
+            ))}
+
+            {/* EMPTY RIGHT GRID */}
+            <div className="hidden lg:block"></div>
+
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 
-const TeamMemberCard = ({ member, shape, size = "medium" }) => {
-  const sizeClasses = {
-    small: "w-32 h-32",
-    medium: "w-40 h-40",
-    large: "w-56 h-56",
-  };
-
+const TeamMemberCard = ({ member }) => {
   return (
-    <motion.div whileHover={{ y: -5 }} className="group cursor-pointer">
-      <div
-        className={`${sizeClasses[size]} ${shape} overflow-hidden mb-4 transition-transform shadow-lg hover:shadow-xl relative`}
-      >
+    <motion.div
+      whileHover={{ y: -6 }}
+      className="group cursor-pointer rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 border border-neutral-200"
+    >
+      {/* Image */}
+      <div className="w-full h-88 overflow-hidden rounded-t-xl mb-5">
         {member.image ? (
           <StrapiImage
             src={member.image}
             alt={member.name}
-            className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
-            width={224}
-            height={224}
+            width={300}
+            height={300}
+            className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500 text-sm">
+          <div className="w-full h-full flex items-center justify-center bg-neutral-100 text-neutral-500 text-sm">
             No Image
           </div>
         )}
       </div>
-      <div className="text-center">
-        <h3 className="font-bold text-xl mb-1">{member.name}</h3>
-        <div className="flex items-center justify-center gap-2 text-gray-600">
-          <span className="text-sm">{member.designation}</span>
-          {member.href && (
-            <motion.a
-              whileHover={{ scale: 1.2 }}
-              href={member.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-600 transition-colors"
-            >
-              <Linkedin size={16} />
-            </motion.a>
-          )}
-        </div>
+
+      {/* Details */}
+      <div className="text-center px-3 pb-4">
+        <h3 className="text-xl font-semibold text-neutral-900">
+          {member.name}
+        </h3>
+        <p className="text-neutral-600 text-sm mb-3">{member.designation}</p>
+
+        {member.href && (
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            href={member.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center text-neutral-900 hover:text-blue-800 transition-colors"
+          >
+            <FaLinkedin size={20} />
+          </motion.a>
+        )}
       </div>
     </motion.div>
   );

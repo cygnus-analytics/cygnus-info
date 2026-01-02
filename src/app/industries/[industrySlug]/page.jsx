@@ -1,6 +1,5 @@
 import IndustriesClient from "../../../components/pages/Industries";
 import { getIndustriesPage } from "@/data/loaders";
-
 import BankingBanner from "../../../../public/industrypics/Banking/banner.jpg";
 import OilAndGasBanner from "../../../../public/industrypics/Oil/banner.jpg";
 import EducationBanner from "../../../../public/industrypics/Education/classic-american-school-2025-02-11-21-11-14-utc-2.jpg";

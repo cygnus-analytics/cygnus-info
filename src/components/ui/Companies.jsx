@@ -22,12 +22,12 @@ const Companies = ({ data }) => {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           {data.title}
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-600">
+        <p className="text-sm sm:text-base md:text-lg text-neutral-600">
           {data.description}
         </p>
       </div>
 
-      <div className="w-full md:w-4/6 h-64 md:h-72 lg:h-[18rem] rounded-l-2xl relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 flex items-center justify-center overflow-hidden">
+      <div className="w-full md:w-4/6 h-64 md:h-72 lg:h-[18rem] rounded-none sm:rounded-none md:rounded-none lg:rounded-l-2xl relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 flex items-center justify-center overflow-hidden">
         <div className="absolute w-full text-white">
           <LogoLoop
             logos={logoBannerImages}

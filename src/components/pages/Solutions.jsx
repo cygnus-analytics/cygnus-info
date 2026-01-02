@@ -1,7 +1,6 @@
 "use client"
 import React from "react";
 import Infrastructure from "../sections/Solutions/Infrastructure";
-// import AudioVideoScreens from "../sections/Solutions/AudioVideoScreens";
 import CyberSecurity from "../sections/Solutions/CyberSecurity";
 import Storage from "../sections/Solutions/Storage";
 import Network from "../sections/Solutions/Network";

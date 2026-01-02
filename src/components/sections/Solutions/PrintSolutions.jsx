@@ -50,7 +50,7 @@ const PrintSolutions = () => {
           {/* First Column with Circle */}
           <div className="flex justify-center items-center lg:col-span-3">
             <div className="w-60 h-60 md:w-80 md:h-80 bg-white rounded-full flex justify-center items-center shadow-lg">
-              <img
+              <img loading="lazy"
                 src={cygnus_logo}
                 alt="Cygnus Logo"
                 className="w-32 h-32 md:w-44 md:h-44 object-contain"
@@ -116,7 +116,7 @@ const PrintSolutions = () => {
                 className="w-[534px] h-[152px] bg-[#FDFDFF] rounded-full flex justify-start items-center"
               >
                 <div className="h-40 w-40 border-8 border-blue-200 rounded-full bg-gradient-to-b from-[#8EB9FF] to-[#3478E6] flex justify-center items-center">
-                  <img
+                  <img loading="lazy"
                     src={item.image}
                     alt={`${item.title} Icon`}
                     className="w-16 h-16 object-contain"

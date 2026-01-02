@@ -1,8 +1,4 @@
 import { motion } from "framer-motion";
-import image1 from "../../../../public/industrypics/Oil/4.jpg";
-import image2 from "../../../../public/industrypics/Oil/3.jpg";
-import image3 from "../../../../public/industrypics/Oil/2.jpg";
-import image4 from "../../../../public/industrypics/Oil/1.jpg";
 
 const cardVariants = {
   hiddenLeft: { opacity: 0, x: -80 },
@@ -23,7 +19,7 @@ const OilAndGas = () => {
       image: "/industrypics/Oil/4.jpg",
     },
     {
-      title: "Cloud Solutions with HPE GreenLake",
+      title: "Cloud Solutions",
       description:
         "Leverage the flexibility and scalability of cloud services through HPE GreenLake, enabling you to optimize workloads, reduce costs, and access real-time insights for smarter decision-making.",
         image: "/industrypics/Oil/3.jpg",
@@ -59,7 +55,7 @@ const OilAndGas = () => {
           >
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-64 md:h-60">
-              <img
+              <img loading="lazy"
                 src={card.image}
                 alt={card.title}
                 className="w-full h-full object-cover rounded-xl"

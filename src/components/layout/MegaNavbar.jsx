@@ -8,7 +8,7 @@ const MegaNavbar = ({ headerData }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  
+
   const menus = headerData?.menus || [];
   const logoText = headerData?.logo?.logoText || "Logo";
   const cta = headerData?.cta;
@@ -17,13 +17,16 @@ const MegaNavbar = ({ headerData }) => {
     if (!str) return "";
     return str
       .split(" ")
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
   };
 
   const DropdownItem = ({ title, description, href }) => (
     <li>
-      <Link href={href || "#"} className="block p-3 rounded-lg hover:bg-gray-100">
+      <Link
+        href={href || "#"}
+        className="block p-3 rounded-lg hover:bg-gray-100"
+      >
         <h4 className="font-semibold text-blue-800">{title}</h4>
         <span className="text-sm text-gray-800">{description}</span>
       </Link>
@@ -55,14 +58,15 @@ const MegaNavbar = ({ headerData }) => {
       ref={menuRef}
     >
       <div className="flex items-center justify-between mx-auto py-4 px-6">
-        <Link href="/" className="flex items-center space-x-3">
-          <Image
-            src="/logo/cygnus.png"
-            alt={logoText}
-            width={100}
-            height={50}
-            className="h-10 w-auto cursor-pointer"
-          />
+        <Link href="/">
+          <div className="relative h-10 w-44">
+            <Image
+              src="/logo/cygnus.png"
+              alt={logoText}
+              fill
+              className="object-contain cursor-pointer"
+            />
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center font-medium w-auto">
@@ -143,7 +147,7 @@ const MegaNavbar = ({ headerData }) => {
                   >
                     {capitalizeWords(menu.title)}
                   </Link>
-                  
+
                   {menu.hasDropdown && (
                     <button
                       onClick={(e) => {

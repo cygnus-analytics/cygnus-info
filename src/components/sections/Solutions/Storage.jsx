@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import CardSwap, { Card } from "../../ui/CardSwap/CardSwap";
-import Squares from "../../ui/Squares";
 import StrapiImage from "../../ui/StrapiImage";
+import dynamic from "next/dynamic";
+
+const Squares = dynamic(() => import("../../ui/Squares"), { ssr: false });
 
 const Storage = ({ data }) => {
   if (!data || !data.Section) return null;
@@ -12,7 +14,6 @@ const Storage = ({ data }) => {
 
   return (
     <section className="relative py-28 overflow-hidden">
-      {/* Background Squares Animation */}
       <div className="absolute inset-0 z-0">
         <Squares
           speed={0.2}

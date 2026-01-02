@@ -7,12 +7,12 @@ import logo from "../../../../public/logo/cygnus.png";
 const items = [
   {
     title: (
-      <h2 className="text-2xl text-white font-bold font-sans drop-shadow-lg">
+      <h2 className="text-2xl text-white drop-shadow-lg">
         Long-term Relationships
       </h2>
     ),
     description:(
-      <p className="font-sans text-md font-normal text-gray-200 drop-shadow-md">
+      <p className="blue text-md font-normal text-gray-200 drop-shadow-md">
       We focus on building strong, lasting connections based on trust, reliability, and shared success.
       </p>
     ),
@@ -20,7 +20,6 @@ const items = [
       <div className="relative w-full h-full rounded-lg overflow-hidden">
         <video
           autoPlay
-          loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
@@ -63,12 +62,12 @@ const items = [
   },
   {
     title: (
-      <h2 className="text-2xl text-white font-bold font-sans drop-shadow-lg">
+      <h2 className="text-2xl text-white font-bold blue drop-shadow-lg">
         Tailored Solutions
       </h2>
     ),
     description: (
-      <p className="font-sans text-md font-normal text-gray-200 drop-shadow-md">
+      <p className="blue text-md font-normal text-gray-200 drop-shadow-md">
         Custom-built strategies that adapt to your unique business goals,
         market, and operational challenges.
       </p>

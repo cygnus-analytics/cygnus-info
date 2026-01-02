@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import StrapiImage from "../../ui/StrapiImage";
 
 export default function Offices({ locationsData }) {

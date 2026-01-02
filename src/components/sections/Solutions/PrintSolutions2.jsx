@@ -29,7 +29,7 @@ const PrinterSolutions = ({ data }) => {
   }));
 
   return (
-    <section className=" bg-gray-50">
+    <section className="">
         <StickyScroll content={content} />
     </section>
   );

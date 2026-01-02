@@ -63,7 +63,7 @@ export const LogoBanner = ({
             key={`card-${idx}`}
             className="shrink-0 flex items-center justify-center p-2 transition hover:scale-150"
           >
-            <img
+            <img loading="lazy"
               src={item}
               alt={`banner-${idx}`}
               className="max-h-16 sm:max-h-20 md:max-h-24 lg:max-h-12 object-contain"

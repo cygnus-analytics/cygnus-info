@@ -9,7 +9,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "your-production-domain.com",
+        hostname: "tranquil-acoustics-0f31afe5fd.media.strapiapp.com",
       },
       {
         protocol: "https",

@@ -1,8 +1,6 @@
 "use client";
-
 import { ContainerScroll } from "../ui/ContainerScroll";
 import { motion } from "framer-motion";
-import StrapiImage from "../ui/StrapiImage"; 
 
 const HeroScrollDemo = ({ data }) => {
   if (!data) return null;

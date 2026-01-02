@@ -45,7 +45,7 @@ export async function getHomePage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
 
@@ -95,8 +95,8 @@ export async function getGlobal() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
-     });
+    next: { revalidate: 604800 },
+  });
 }
 
 export async function getSolutionsPage() {
@@ -267,7 +267,7 @@ export async function getSolutionsPage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
 
@@ -347,7 +347,7 @@ export async function getCompanyPage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
 
@@ -381,10 +381,9 @@ export async function getContactPage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
-
 
 export async function getIndustriesPage() {
 
@@ -412,7 +411,7 @@ export async function getIndustriesPage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
 
@@ -438,7 +437,7 @@ export async function getCaseStudyPage() {
   return await fetchAPI(url.href,{ 
     method: "GET",
     cache: "force-cache",
-    next: { revalidate: 600 },
+    next: { revalidate: 604800 },
      });
 }
 
