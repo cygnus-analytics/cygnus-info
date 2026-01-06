@@ -62,7 +62,7 @@ const CyberSecurity = ({ data }) => {
               boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group bg-gradient-to-br from-green-500 via-sky-400 to-blue-500 relative p-6 hover:p-8 rounded-xl overflow-hidden transition-all duration-500 ease-in-out cursor-pointer h-32 sm:h-32 md:h-28 lg:h-32 hover:h-56 sm:hover:h-[38rem] md:hover:h-[32rem] lg:hover:h-[28rem] shadow-lg"
+            className="group bg-gradient-to-br from-green-500 via-sky-400 to-blue-500 relative p-6 hover:p-8 rounded-xl overflow-hidden transition-all duration-500 ease-in-out cursor-pointer h-32 sm:h-32 md:h-28 lg:h-32 hover:h-[20rem] sm:hover:h-[44rem] md:hover:h-[32rem] lg:hover:h-[28rem] shadow-lg"
           >
             {/* Front Face */}
             <motion.div className="absolute text-white bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 inset-0 flex flex-col justify-center items-center transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">

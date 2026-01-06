@@ -48,13 +48,13 @@ const CustomCarousel = ({ data }) => {
             {index === currentIndex && (
               <motion.div
                 key={slide.heading}
-                className="absolute inset-0 flex flex-col justify-center px-4 md:pl-[20vh] pt-[45vh] md:pt-0 z-20"
+                className="absolute inset-0 flex flex-col justify-center px-4 md:pl-[8vh] lg:pl-[20vh] pt-[45vh] md:pt-0 z-20"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 1.0 }}
-              >
-                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold mb-2">
+              > 
+                <h1 className="text-white text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2">
                   {slide.heading}
                 </h1>
                 <p className="text-white text-md sm:text-lg md:text-lg max-w-xl mb-4">

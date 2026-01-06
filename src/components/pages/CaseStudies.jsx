@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import StrapiImage from "../ui/StrapiImage";
 
 export default function CaseStudies({ caseStudyData }) {
+  // Extracting data from the Strapi response
   const caseStudies = caseStudyData?.data || [];
 
   return (
@@ -18,7 +19,7 @@ export default function CaseStudies({ caseStudyData }) {
       </motion.h1>
 
       <motion.p
-        className="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto"
+        className="text-center text-lg md:text-xl text-neutral-600 mb-12 max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
@@ -31,7 +32,7 @@ export default function CaseStudies({ caseStudyData }) {
         {caseStudies.map((card, index) => (
           <Link
             href={`/casestudies/${card.slug}`}
-            key={card.documentId}
+            key={card.documentId || card.id}
             className="w-full max-w-xs group/card"
           >
             <motion.div
@@ -44,19 +45,20 @@ export default function CaseStudies({ caseStudyData }) {
               <div className="absolute inset-0 z-0">
                 <StrapiImage
                   src={card.image}
-                  alt={card.image.alternativeText || card.heading}
+                  alt={card.image?.alternativeText || card.heading}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
+              {/* Overlays */}
               <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60 z-0"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-0"></div>
 
               {/* Heading at the bottom */}
               <div className="z-10">
-                <h2 className="font-bold text-md md:text-xl text-gray-200">
+                <h2 className="font-bold text-md md:text-xl text-neutral-200">
                   {card.heading}
                 </h2>
               </div>
@@ -64,8 +66,11 @@ export default function CaseStudies({ caseStudyData }) {
           </Link>
         ))}
       </div>
+
       <div className="px-4 sm:px-6 md:px-10">
-        <h2 className="mt-18 text-2xl sm:text-2xl md:text-3xl lg:text:4xl text-center font-semibold ">And many more...</h2>
+        <h2 className="mt-20 text-2xl md:text-3xl lg:text-4xl text-center font-semibold text-neutral-800">
+          And many more...
+        </h2>
       </div>
     </div>
   );

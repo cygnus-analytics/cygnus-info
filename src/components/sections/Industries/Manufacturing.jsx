@@ -1,11 +1,4 @@
 import { motion } from "framer-motion";
-import img1 from "../../../../public/industrypics/Manufacturing/data.jpg";
-import img2 from "../../../../public/industrypics/Manufacturing/itinfra.jpg";
-import img3 from "../../../../public/industrypics/Manufacturing/robot.jpg";
-import img5 from "../../../../public/industrypics/Manufacturing/cyber.jpg";
-import img4 from "../../../../public/industrypics/Manufacturing/cybersec.jpg";
-import img6 from "../../../../public/industrypics/Manufacturing/analytics.jpg";
-import img7 from "../../../../public/industrypics/Manufacturing/automation.jpg";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -20,7 +13,7 @@ const cardVariants = {
   }),
 };
 
-const Manufacturing = () => {
+const Manufacturing = ({cards}) => {
   const cardData = [
     {
       title: "Enterprise Resource Planning (ERP)",
@@ -69,7 +62,7 @@ const Manufacturing = () => {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {cardData.map((card, index) => (
+        {cards?.map((card, index) => (
           <motion.div
             key={index}
             custom={index}
@@ -89,19 +82,19 @@ const Manufacturing = () => {
 
             {/* Title */}
             <h3 className="text-center text-[#25272B] font-poppins text-lg sm:text-xl font-medium leading-snug">
-              {card.title}
+              {card?.title}
             </h3>
 
             {/* Description */}
             <p className="text-center text-gray-600 text-sm sm:text-base">
-              {card.description}
+              {card?.description}
             </p>
 
             {/* Image */}
             <div className="w-full aspect-[4/3] rounded-[24px] border border-[#E8E8E8] overflow-hidden">
               <img loading="lazy"
-                src={card.image}
-                alt={card.title}
+                src={card?.image.url}
+                alt={card?.title}
                 className="w-full h-full object-cover"
               />
             </div>

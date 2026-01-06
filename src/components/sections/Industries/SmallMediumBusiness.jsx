@@ -1,11 +1,4 @@
 import { motion } from "framer-motion";
-import smb1 from "../../../../public/industrypics/Smb/smb-1.jpg";
-import smb2 from "../../../../public/industrypics/Smb/smb-2.jpg";
-import smb3 from "../../../../public/industrypics/Smb/smb-3.jpg";
-import smb4 from "../../../../public/industrypics/Smb/smb-4.jpg";
-import smb5 from "../../../../public/industrypics/Smb/smb-5.jpg";
-import smb6 from "../../../../public/industrypics/Smb/smb-6.jpg";
-import smb7 from "../../../../public/industrypics/Smb/smb-7.jpg";
 
 const textVariants = {
   hidden: (direction) => ({
@@ -33,7 +26,7 @@ const imageVariants = {
   },
 };
 
-const SmallMediumBusiness = () => {
+const SmallMediumBusiness = ({cards}) => {
   const cardData = [
     {
       title: "IT Infrastructure Solutions",
@@ -82,7 +75,7 @@ const SmallMediumBusiness = () => {
   return (
     <section className="mx-auto max-w-7xl">
       <div className="flex flex-col gap-10">
-        {cardData.map((card, index) => {
+        {cards?.map((card, index) => {
           const isEven = index % 2 === 0;
           const textDirection = isEven ? "right" : "left";
           const imageDirection = isEven ? "left" : "right";
@@ -104,7 +97,7 @@ const SmallMediumBusiness = () => {
               <motion.div
                 className="h-[12rem] w-[12rem] md:h-[15rem] md:w-[15rem] border-8 border-white rounded-full flex-shrink-0"
                 style={{
-                  backgroundImage: `url(${card.image})`,
+                  backgroundImage: `url(${card?.image?.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -125,10 +118,10 @@ const SmallMediumBusiness = () => {
                 variants={textVariants}
               >
                 <h3 className="text-[20px] md:text-[24px] font-semibold text-[#25272B] font-poppins">
-                  {card.title}
+                  {card?.title}
                 </h3>
                 <p className="text-[14px] md:text-[16px] font-normal text-[rgba(37,39,43,0.60)] leading-[22px] md:leading-[24px] font-poppins mt-4 max-w-md">
-                  {card.description}
+                  {card?.description}
                 </p>
               </motion.div>
             </div>

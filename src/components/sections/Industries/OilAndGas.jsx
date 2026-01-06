@@ -10,7 +10,7 @@ const cardVariants = {
   },
 };
 
-const OilAndGas = () => {
+const OilAndGas = ({cards}) => {
   const cardData = [
     {
       title: "IT Infrastructure Solutions",
@@ -41,7 +41,7 @@ const OilAndGas = () => {
   return (
     <section className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-12">
-        {cardData.map((card, index) => (
+        {cards.map((card, index) => (
           <motion.div
             key={index}
             className={`flex flex-col md:flex-row ${
@@ -56,8 +56,8 @@ const OilAndGas = () => {
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-64 md:h-60">
               <img loading="lazy"
-                src={card.image}
-                alt={card.title}
+                src={card?.image?.url}
+                alt={card?.title}
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
@@ -65,9 +65,9 @@ const OilAndGas = () => {
             {/* Text Content */}
             <div className="w-full md:w-1/2">
               <h3 className="text-2xl font-bold mb-4">
-                {card.title}
+                {card?.title}
               </h3>
-              <p className="text-gray-600">{card.description}</p>
+              <p className="text-gray-600">{card?.description}</p>
             </div>
           </motion.div>
         ))}

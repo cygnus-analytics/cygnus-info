@@ -14,7 +14,7 @@ const cardVariants = {
   }),
 };
 
-const Education = () => {
+const Education = ({cards}) => {
   const cardData = [
     {
       title: "Data Center Setup",
@@ -51,7 +51,7 @@ const Education = () => {
   return (
     <section className="mx-auto max-w-6xl py-12 px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {cardData.map((card, index) => (
+        {cards.map((card, index) => (
           <motion.div
             key={index}
             className="flex flex-col items-center gap-4 p-6 rounded-[40px] bg-white shadow-md hover:shadow-lg transition-shadow"
@@ -71,12 +71,12 @@ const Education = () => {
 
             {/* Title */}
             <h3 className="text-center text-lg sm:text-xl font-semibold">
-              {card.title}
+              {card?.title}
             </h3>
 
             {/* Description */}
             <p className="text-center text-sm sm:text-base text-gray-600">
-              {card.description}
+              {card?.description}
             </p>
           </motion.div>
         ))}

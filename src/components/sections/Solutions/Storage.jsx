@@ -38,7 +38,7 @@ const Storage = ({ data }) => {
         </div>
 
         {/* Right Cards Section */}
-        <div className="w-full mt-8 sm:mt-0 md:w-1/2 h-[350px] md:h-[600px] relative">
+        <div className="w-full mt-8 sm:mt-0 md:w-1/1 lg:w-1/2 h-[350px] md:h-[600px] relative">
           <CardSwap
             cardDistance={60}
             verticalDistance={90}

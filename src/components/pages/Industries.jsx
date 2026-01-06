@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,25 +10,17 @@ import Manufacturing from "../sections/Industries/Manufacturing";
 import ConsumerSector from "../sections/Industries/ConsumerSector";
 import SmallMediumBusiness from "../sections/Industries/SmallMediumBusiness";
 
-const createSlug = (name) => {
-  return name
-    .toLowerCase()
-    .replace(/ & /g, "-")
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]+/g, "");
-};
-
-const componentMap = {
-  [createSlug("Banking & Finance")]: <BankingFinance />,
-  [createSlug("Oil and Gas")]: <OilAndGas />,
-  [createSlug("Education")]: <Education />,
-  [createSlug("Manufacturing")]: <Manufacturing />,
-  [createSlug("Consumer Sector")]: <ConsumerSector />,
-  [createSlug("Small and Medium Business (SMB)")]: <SmallMediumBusiness />,
-};
-
 export default function IndustriesClient({ industries, selected }) {
   const router = useRouter();
+
+  const componentMap = {
+    "banking-finance": <BankingFinance cards={selected?.IndustryCard} />,
+    "oil-and-gas": <OilAndGas cards={selected?.IndustryCard} />,
+    "education": <Education cards={selected?.IndustryCard} />,
+    "manufacturing": <Manufacturing cards={selected?.IndustryCard} />,
+    "consumer-sector": <ConsumerSector cards={selected?.IndustryCard} />,
+    "small-and-medium-business-smb": <SmallMediumBusiness cards={selected?.IndustryCard} />,
+  };
 
   useEffect(() => {
     if (!selected) {
@@ -50,12 +41,12 @@ export default function IndustriesClient({ industries, selected }) {
               key={index}
               onClick={() => handleTabClick(industry.slug)}
               className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition cursor-pointer ${
-                selected.slug === industry.slug
+                selected?.slug === industry.slug
                   ? "bg-indigo-200 text-blue-900"
                   : "text-blue-900 hover:bg-[#F2F5FF]"
               }`}
             >
-              {industry.name}
+              {industry?.heading}
             </button>
           ))}
         </div>
@@ -63,14 +54,14 @@ export default function IndustriesClient({ industries, selected }) {
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={selected.slug}
+          key={selected?.slug}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="relative h-[16rem] md:h-[20rem] bg-gray-200 mt-10"
           style={{
-            backgroundImage: `url(${selected?.banner.src})`,
+            backgroundImage: `url(${selected?.banner?.[0]?.url})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -83,7 +74,7 @@ export default function IndustriesClient({ industries, selected }) {
               transition={{ delay: 0.2, duration: 0.4 }}
               className="text-center text-white font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-wide leading-tight"
             >
-              {selected?.name}
+              {selected?.heading}
             </motion.h1>
           </div>
         </motion.div>
@@ -91,7 +82,7 @@ export default function IndustriesClient({ industries, selected }) {
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={selected.slug + "-desc"}
+          key={selected?.slug + "-desc"}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -106,14 +97,14 @@ export default function IndustriesClient({ industries, selected }) {
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={selected.slug + "-component"}
+          key={selected?.slug + "-component"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="mt-8"
         >
-          {componentMap[selected.slug]}
+          {componentMap[selected?.slug]}
         </motion.div>
       </AnimatePresence>
     </div>

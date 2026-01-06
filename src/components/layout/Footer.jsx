@@ -28,7 +28,7 @@ const Footer = ({ footerData }) => {
     <footer className="bg-gradient-to-br from-blue-800 to-blue-950">
       <div className="mx-auto max-w-screen-xl space-y-8 pt-16 pb-30 lg:space-y-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div>
+          <div className="px-4">
             <StrapiImage
               src={logoUrl}
               alt={logoAlt}
@@ -37,7 +37,7 @@ const Footer = ({ footerData }) => {
               className="h-8 w-48"
             />
 
-            <p className="mt-4 max-w-xs text-white pl-3">
+            <p className="mt-4 max-w-xs text-white px-2">
               CYGNUS INFORMATION SOLUTIONS PVT. LTD.
               <br />
               Registered Office - 1005 Lodha Supremus, Opp MTNL Building, Saki
@@ -45,7 +45,7 @@ const Footer = ({ footerData }) => {
             </p>
 
             {/* Social icons */}
-            <ul className="mt-8 flex gap-6 pl-3">
+            <ul className="mt-8 flex gap-6 px-2">
               {links?.map((item) => {
                 const Icon = getSocialIcon(item.platform);
                 return (
@@ -68,7 +68,7 @@ const Footer = ({ footerData }) => {
           </div>
 
           {/* Right section with dynamic link groups */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 px-3">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 px-6">
             {linkGroup?.map((group) => (
               <div key={group.id}>
                 <p className="font-semibold text-white">{group.title}</p>
@@ -89,13 +89,13 @@ const Footer = ({ footerData }) => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white px-6">
           <p className="text-center sm:text-left">
             &copy; 2025. Cygnus Information Solutions Pvt. Ltd.<br/> All rights
             reserved.
           </p>
 
-          <div className="flex gap-6 flex-wrap justify-center sm:justify-end">
+          <div className="flex gap-6 flex-wrap justify-center sm:justify-end mt-4 md:mt-0 lg:mt-1">
             <p className="transition hover:text-neutral-200 cursor-pointer">
               Terms and Conditions
             </p>

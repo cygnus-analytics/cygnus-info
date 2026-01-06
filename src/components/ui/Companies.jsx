@@ -17,9 +17,9 @@ const Companies = ({ data }) => {
   });
 
   return (
-    <div className="w-full flex flex-col md:flex-row justify-center items-center py-16 md:py-28">
-      <div className="w-full md:w-2/6 px-6 md:px-10 mb-8 md:mb-0 text-center md:text-start">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+    <div className="w-full flex flex-col md:flex-col lg:flex-row justify-center items-center py-16 md:py-28">
+      <div className="w-full md:w-full lg:w-2/6 px-6 md:px-10  mb-8 md:mb-8 lg:mb-0 text-center md:text-center lg:text-start">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-4">
           {data.title}
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-neutral-600">
@@ -27,7 +27,7 @@ const Companies = ({ data }) => {
         </p>
       </div>
 
-      <div className="w-full md:w-4/6 h-64 md:h-72 lg:h-[18rem] rounded-none sm:rounded-none md:rounded-none lg:rounded-l-2xl relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 flex items-center justify-center overflow-hidden">
+      <div className="w-full lg:w-4/6 h-64 md:h-72 lg:h-[18rem] rounded-none sm:rounded-none md:rounded-none lg:rounded-l-2xl relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 flex items-center justify-center overflow-hidden">
         <div className="absolute w-full text-white">
           <LogoLoop
             logos={logoBannerImages}

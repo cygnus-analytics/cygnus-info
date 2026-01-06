@@ -1,9 +1,4 @@
 import { motion } from "framer-motion";
-import img1 from "../../../../public/industrypics/ConsumerSector/1.jpg";
-import img2 from "../../../../public/industrypics/ConsumerSector/2.jpg";
-import img3 from "../../../../public/industrypics/ConsumerSector/3.jpg";
-import img4 from "../../../../public/industrypics/ConsumerSector/4.jpg";
-import img5 from "../../../../public/industrypics/ConsumerSector/5.jpg";
 
 const textVariants = {
   hidden: (direction) => ({
@@ -29,7 +24,7 @@ const imageVariants = {
   },
 };
 
-const ConsumerSector = () => {
+const ConsumerSector = ({cards}) => {
   const cardData = [
     {
       title: "Customized IT Infrastructure",
@@ -66,7 +61,7 @@ const ConsumerSector = () => {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex flex-col gap-14">
-        {cardData.map((card, index) => {
+        {cards?.map((card, index) => {
           const isEven = index % 2 === 0;
           const textDirection = isEven ? "left" : "right";
           const imageDirection = isEven ? "right" : "left";
@@ -88,10 +83,10 @@ const ConsumerSector = () => {
                 variants={textVariants}
               >
                 <h3 className="text-[#25272B] text-[20px] sm:text-[24px] font-poppins font-medium leading-[32px] tracking-[0.48px] mb-4 text-center md:text-left">
-                  {card.title}
+                  {card?.title}
                 </h3>
                 <p className="text-[rgba(37,39,43,0.60)] text-[16px] font-poppins leading-[24px] text-center md:text-left">
-                  {card.description}
+                  {card?.description}
                 </p>
               </motion.div>
 
@@ -107,7 +102,7 @@ const ConsumerSector = () => {
                 <div
                   className="w-full h-[250px] sm:h-[320px] md:h-[360px] rounded-lg bg-gray-200"
                   style={{
-                    backgroundImage: `url(${card.image})`,
+                    backgroundImage: `url(${card?.image?.url})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}

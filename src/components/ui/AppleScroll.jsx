@@ -6,6 +6,9 @@ const HeroScrollDemo = ({ data }) => {
   if (!data) return null;
 
   const { title, description, image } = data;
+  const videoSrc = image?.url?.endsWith(".mp4") 
+    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}` 
+    : "/solutionpics/hpc.mp4";
 
   return (
     <div className="flex flex-col overflow-hidden">
@@ -29,7 +32,7 @@ const HeroScrollDemo = ({ data }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-md sm:text-md md:text-lg text-gray-600 max-w-4xl mx-auto mb-20"
+              className="text-md sm:text-md md:text-lg text-gray-600 max-w-4xl mx-auto mb-10 md:mb-20"
             >
               {description?.trim() ||
                 "Accelerate complex computations and data-intensive workflows with our HPC Cluster solutions."}
@@ -37,23 +40,18 @@ const HeroScrollDemo = ({ data }) => {
           </>
         }
       >
-        {image?.url?.endsWith(".mp4") ? (
+        <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <video
-            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`}
-            className="mx-auto rounded-2xl object-cover h-full w-full"
+            src={videoSrc}
+            className="w-full h-full object-cover rounded-2xl"
             autoPlay
             muted
             loop
+            playsInline 
+            webkit-playsinline="true"
+            preload="none"
           />
-        ) : (
-          <video
-            src="/solutionpics/hpc.mp4"
-            className="mx-auto rounded-2xl object-cover h-full w-full"
-            autoPlay
-            muted
-            loop
-          />
-        )}
+        </div>
       </ContainerScroll>
     </div>
   );

@@ -20,7 +20,7 @@ const ScrollHeroSection = () => {
 
   return (
     <div
-      className="h-[200vh] bg-white w-full relative pt-40 overflow-clip bg-gradient-to-t from-white to-blue-100"
+      className="h-[200vh] bg-white w-full relative pt-10 overflow-clip bg-gradient-to-t from-white to-blue-100"
       ref={ref}
     >
       <GoogleGeminiEffect

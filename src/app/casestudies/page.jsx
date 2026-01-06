@@ -6,14 +6,15 @@ export const metadata = {
   title: "Cygnus | Case Studies",
 }
 
+export const dynamic = 'force-static';
 export const revalidate = 604800;
 
 export default async function Page() {
   const caseStudyData = await getCaseStudyPage();
 
   return (
-    <div>
+    <main>
       <CaseStudies caseStudyData={caseStudyData} />
-    </div>
+    </main>
   )
 }
