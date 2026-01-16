@@ -34,9 +34,9 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="w-full max-w-lg mx-auto p-6 sm:p-8 bg-white border border-gray-100 rounded-lg shadow-lg"
+      className="w-full max-w-lg mx-auto p-6 sm:p-8 bg-white border border-neutral-100 rounded-lg shadow-lg"
     >
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-6">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-800 text-center mb-6">
         Enquiry Form
       </h2>
 
@@ -45,7 +45,7 @@ const ContactForm = () => {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-neutral-600 mb-1"
           >
             Full Name
           </label>
@@ -54,7 +54,7 @@ const ContactForm = () => {
             name="name"
             id="name"
             placeholder="Enter your name"
-            className="w-full px-4 py-2 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-700"
+            className="w-full px-4 py-2 border border-neutral-100 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-neutral-100 text-neutral-700"
             required
           />
         </div>
@@ -63,7 +63,7 @@ const ContactForm = () => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-neutral-600 mb-1"
           >
             Email Address
           </label>
@@ -72,7 +72,7 @@ const ContactForm = () => {
             name="email"
             id="email"
             placeholder="Enter your email"
-            className="w-full px-4 py-2 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-700"
+            className="w-full px-4 py-2 border border-neutral-100 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-neutral-100 text-neutral-700"
             required
           />
         </div>
@@ -81,7 +81,7 @@ const ContactForm = () => {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-neutral-600 mb-1"
           >
             Phone Number
           </label>
@@ -90,7 +90,7 @@ const ContactForm = () => {
             name="phone"
             id="phone"
             placeholder="Enter your phone number"
-            className="w-full px-4 py-2 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-700"
+            className="w-full px-4 py-2 border border-neutral-100 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-neutral-100 text-neutral-700"
             required
           />
         </div>
@@ -99,7 +99,7 @@ const ContactForm = () => {
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-600"
+            className="block text-sm font-medium text-neutral-600 mb-1"
           >
             Message
           </label>
@@ -108,7 +108,7 @@ const ContactForm = () => {
             id="message"
             rows="5"
             placeholder="Enter your message"
-            className="w-full px-4 py-2 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-700"
+            className="w-full px-4 py-2 border border-neutral-100 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 bg-neutral-100 text-neutral-700"
           ></textarea>
         </div>
       </div>
@@ -117,9 +117,9 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full mt-6 py-3 font-semibold rounded-md shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+        className={`w-full mt-6 py-3 font-semibold rounded-md shadow-md transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
           loading
-            ? "bg-gray-400 cursor-not-allowed"
+            ? "bg-neutral-400 cursor-not-allowed"
             : "bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-white hover:shadow-lg transform hover:scale-[1.02]"
         }`}
       >
@@ -128,7 +128,7 @@ const ContactForm = () => {
 
       {/* Status Message */}
       {statusMessage && (
-        <p className="mt-4 text-center text-sm font-semibold text-gray-700">
+        <p className="mt-4 text-center text-sm font-semibold text-neutral-700">
           {statusMessage}
         </p>
       )}

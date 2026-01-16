@@ -165,7 +165,7 @@ const MegaNavbar = ({ headerData }) => {
   const cta = headerData?.cta;
 
 const renderDropdown = (dropdownItems = [], columns = 2) => (
-  <div className="absolute top-full left-1/2 -translate-x-1/2 z-40 bg-white shadow-sm w-[40rem] p-4 rounded-xl">
+  <div className="absolute top-full left-1/2 -translate-x-1/2 z-40 bg-white shadow-sm w-[45rem] p-4 rounded-xl">
     <div className={`grid grid-cols-${columns} gap-4`}>
       {Array.from({ length: columns }).map((_, colIndex) => (
         <ul key={colIndex} className="space-y-1">
@@ -194,9 +194,9 @@ const renderDropdown = (dropdownItems = [], columns = 2) => (
       <div className="flex items-center justify-between mx-auto py-4 px-6">
         {/* Brand Logo */}
         <Link href="/">
-          <div className="relative h-10 w-44">
+          <div className="relative h-10 w-40">
             <Image
-              src="/logo/cygnus.png"
+              src="/logo/Cygnus Exp.svg"
               alt={logoText}
               fill
               className="object-contain cursor-pointer"

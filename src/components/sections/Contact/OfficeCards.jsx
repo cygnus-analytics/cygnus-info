@@ -23,7 +23,7 @@ export default function Offices({ locationsData }) {
           <div
             className="
               absolute w-full h-full rounded-2xl
-              bg-gradient-to-br from-neutral-100 to-neutral-100
+              bg-neutral-50
               flex items-center justify-center p-6 text-center
               text-blue-900 font-semibold
               text-base sm:text-lg md:text-xl
