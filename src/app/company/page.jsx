@@ -4,7 +4,7 @@ import { getCompanyPage } from '@/data/loaders'
 
 export const revalidate = 604800;
 
-export const metadata = { title: "Cygnus | Company" }
+export const metadata = { title: " Company | Cygnus" }
 
 export default async function Page() {
   const companyPageData = await getCompanyPage();

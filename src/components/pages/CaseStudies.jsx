@@ -44,8 +44,8 @@ export default function CaseStudies({ caseStudyData }) {
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
                 <StrapiImage
-                  src={card.image}
-                  alt={card.image?.alternativeText || card.heading}
+                  src={card?.image}
+                  alt={card?.image?.alternativeText || card.heading}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

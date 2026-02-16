@@ -3,7 +3,7 @@ import React from 'react'
 import { getCaseStudyPage } from '@/data/loaders'
 
 export const metadata = {
-  title: "Cygnus | Case Studies",
+  title: "Case Studies | Cygnus",
 }
 
 export const dynamic = 'force-static';

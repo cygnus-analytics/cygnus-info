@@ -5,7 +5,7 @@ import { getContactPage } from "@/data/loaders.js";
 export const revalidate = 604800;
 
 export const metadata = {
-  title: "Cygnus | Contact",
+  title: "Contact | Cygnus",
 }
 
 export default async function Page() {

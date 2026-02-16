@@ -14,8 +14,8 @@ const capitalizeWords = (str) => {
 
 const DropdownItem = ({ title, description, href, onClick }) => (
   <li>
-    <Link 
-      href={href || "#"} 
+    <Link
+      href={href || "#"}
       className="block p-3 rounded-lg hover:bg-neutral-100"
       onClick={onClick}
     >
@@ -64,14 +64,21 @@ const DesktopMenu = ({ menus, activeMenu, setActiveMenu, renderDropdown }) => {
 /**
  * MOBILE VIEW COMPONENT
  */
-const MobileMenu = ({ menus, menuOpen, setMenuOpen, activeMenu, setActiveMenu, cta }) => {
+const MobileMenu = ({
+  menus,
+  menuOpen,
+  setMenuOpen,
+  activeMenu,
+  setActiveMenu,
+  cta,
+}) => {
   const handleClose = () => setMenuOpen(false);
 
   return (
     <div
       className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-        menuOpen 
-          ? "max-h-[calc(100vh-80px)] opacity-100 " 
+        menuOpen
+          ? "max-h-[calc(100vh-80px)] opacity-100 "
           : "max-h-0 opacity-0 pointer-events-none"
       }`}
     >
@@ -81,10 +88,10 @@ const MobileMenu = ({ menus, menuOpen, setMenuOpen, activeMenu, setActiveMenu, c
           .map((menu) => {
             const isDropdown = menu.hasDropdown;
             const isActive = activeMenu === menu.title;
-            
+
             const itemStyle = `flex items-center justify-between w-full py-3 px-4 rounded-lg transition-colors ${
-              isActive 
-                ? "bg-blue-50 text-blue-900" 
+              isActive
+                ? "bg-blue-50 text-blue-900"
                 : "text-neutral-900 hover:bg-neutral-100"
             }`;
 
@@ -96,7 +103,9 @@ const MobileMenu = ({ menus, menuOpen, setMenuOpen, activeMenu, setActiveMenu, c
                     onClick={() => setActiveMenu(isActive ? null : menu.title)}
                     className={itemStyle}
                   >
-                    <span className="text-base">{capitalizeWords(menu.title)}</span>
+                    <span className="text-base">
+                      {capitalizeWords(menu.title)}
+                    </span>
                     <HiChevronDown
                       className={`w-5 h-5 transition-transform duration-300 ${
                         isActive ? "rotate-180" : ""
@@ -105,12 +114,14 @@ const MobileMenu = ({ menus, menuOpen, setMenuOpen, activeMenu, setActiveMenu, c
                   </button>
                 ) : (
                   /* DIRECT NAVIGATION LINK */
-                  <Link 
-                    href={menu.href || "#"} 
+                  <Link
+                    href={menu.href || "#"}
                     className={itemStyle}
                     onClick={handleClose}
                   >
-                    <span className="text-base">{capitalizeWords(menu.title)}</span>
+                    <span className="text-base">
+                      {capitalizeWords(menu.title)}
+                    </span>
                   </Link>
                 )}
 
@@ -118,15 +129,17 @@ const MobileMenu = ({ menus, menuOpen, setMenuOpen, activeMenu, setActiveMenu, c
                 {isDropdown && (
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isActive ? "max-h-auto opacity-100 mt-1" : "max-h-0 opacity-0"
+                      isActive
+                        ? "max-h-auto opacity-100 mt-1"
+                        : "max-h-0 opacity-0"
                     }`}
                   >
                     <ul className="pl-4 pr-2 py-2 space-y-1 bg-white rounded-b-lg border-l-2 border-blue-200 ml-2">
                       {menu.dropdownItems?.map((item, index) => (
-                        <DropdownItem 
-                          key={index} 
-                          {...item} 
-                          onClick={handleClose} 
+                        <DropdownItem
+                          key={index}
+                          {...item}
+                          onClick={handleClose}
                         />
                       ))}
                     </ul>
@@ -160,37 +173,44 @@ const MegaNavbar = ({ headerData }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const menus = headerData?.menus || [];
+  const fetchedMenus = headerData?.menus || [];
+
+  const menus = [
+    ...fetchedMenus,
+    {
+      id: "press",
+      title: "Press",
+      href: "/press",
+      hasDropdown: false,
+    },
+  ];
   const logoText = headerData?.logo?.logoText || "Logo";
   const cta = headerData?.cta;
 
-const renderDropdown = (dropdownItems = [], columns = 2) => (
-  <div className="absolute top-full left-1/2 -translate-x-1/2 z-40 bg-white shadow-sm w-[45rem] p-4 rounded-xl">
-    <div className={`grid grid-cols-${columns} gap-4`}>
-      {Array.from({ length: columns }).map((_, colIndex) => (
-        <ul key={colIndex} className="space-y-1">
-          {dropdownItems
-            .slice(
-              colIndex * Math.ceil(dropdownItems.length / columns),
-              (colIndex + 1) * Math.ceil(dropdownItems.length / columns)
-            )
-            .map((item, index) => (
-              <DropdownItem 
-                key={index} 
-                {...item} 
-                onClick={() => setActiveMenu(null)} 
-              />
-            ))}
-        </ul>
-      ))}
+  const renderDropdown = (dropdownItems = [], columns = 2) => (
+    <div className="absolute top-full left-1/2 -translate-x-1/2 z-40 bg-white shadow-sm w-[45rem] p-4 rounded-xl">
+      <div className={`grid grid-cols-${columns} gap-4`}>
+        {Array.from({ length: columns }).map((_, colIndex) => (
+          <ul key={colIndex} className="space-y-1">
+            {dropdownItems
+              .slice(
+                colIndex * Math.ceil(dropdownItems.length / columns),
+                (colIndex + 1) * Math.ceil(dropdownItems.length / columns)
+              )
+              .map((item, index) => (
+                <DropdownItem
+                  key={index}
+                  {...item}
+                  onClick={() => setActiveMenu(null)}
+                />
+              ))}
+          </ul>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
   return (
-    <nav
-      className="bg-white fixed top-0 left-0 right-0 z-50"
-      ref={menuRef}
-    >
+    <nav className="bg-white fixed top-0 left-0 right-0 z-50" ref={menuRef}>
       <div className="flex items-center justify-between mx-auto py-4 px-6">
         {/* Brand Logo */}
         <Link href="/">
@@ -205,11 +225,11 @@ const renderDropdown = (dropdownItems = [], columns = 2) => (
         </Link>
 
         {/* --- DESKTOP VIEW COMPONENT --- */}
-        <DesktopMenu 
-          menus={menus} 
-          activeMenu={activeMenu} 
-          setActiveMenu={setActiveMenu} 
-          renderDropdown={renderDropdown} 
+        <DesktopMenu
+          menus={menus}
+          activeMenu={activeMenu}
+          setActiveMenu={setActiveMenu}
+          renderDropdown={renderDropdown}
         />
 
         {/* Desktop CTA Button */}
@@ -246,12 +266,12 @@ const renderDropdown = (dropdownItems = [], columns = 2) => (
       </div>
 
       {/* --- MOBILE VIEW COMPONENT --- */}
-      <MobileMenu 
-        menus={menus} 
-        menuOpen={menuOpen} 
+      <MobileMenu
+        menus={menus}
+        menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
-        activeMenu={activeMenu} 
-        setActiveMenu={setActiveMenu} 
+        activeMenu={activeMenu}
+        setActiveMenu={setActiveMenu}
         cta={cta}
       />
     </nav>

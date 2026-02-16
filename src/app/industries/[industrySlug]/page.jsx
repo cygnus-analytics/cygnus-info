@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   if (!selected) return { title: "Industries | Cygnus" };
 
   return {
-    title: `Cygnus | ${selected.heading}`,
+    title: `${selected.heading} | Cygnus`,
     description: selected.description?.slice(0, 160),
   };
 }

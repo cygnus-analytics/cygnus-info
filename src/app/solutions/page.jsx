@@ -5,7 +5,7 @@ import { getSolutionsPage } from "@/data/loaders.js"
 export const revalidate = 604800;
 
 export const metadata = {
-  title: "Cygnus | Solutions",
+  title: " Solutions | Cygnus",
 }
 
 export default async function Page() {

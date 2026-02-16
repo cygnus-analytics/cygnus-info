@@ -32,8 +32,8 @@ export default function CaseStudiesCard({ currentStudy, allStudies = [] }) {
     <div className="mx-auto bg-white pb-24">
       <div className="relative w-full h-[220px] sm:h-[320px] md:h-[400px]">
         <StrapiImage
-          src={currentStudy.image}
-          alt={currentStudy.heading}
+          src={currentStudy?.image}
+          alt={currentStudy?.heading}
           fill
           className="object-cover"
           priority

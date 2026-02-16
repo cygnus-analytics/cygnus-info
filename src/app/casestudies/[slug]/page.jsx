@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   if (!currentStudy) return { title: "Case Study Not Found" };
 
   return {
-    title: `Cygnus | ${currentStudy.heading}`,
+    title: `${currentStudy.heading} | Cygnus`,
     description: currentStudy.challenge?.[0]?.children?.[0]?.text || "Explore our latest case study.",
   };
 }
