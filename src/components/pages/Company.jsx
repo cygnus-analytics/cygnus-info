@@ -15,7 +15,7 @@ export default function Company() {
       <Banner />
       <Team />
       <Community />
-      <TeamMembers />
+      {/* <TeamMembers /> */}
 
       <section className="py-20">
         <h2 className="text-center text-4xl font-bold mb-4">Life at Cygnus</h2>
