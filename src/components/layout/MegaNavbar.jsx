@@ -207,11 +207,11 @@ const MegaNavbar = () => {
         {/* Logo */}
         <a href="/" className="flex items-center space-x-3">
           <Image
-            src={cygnusLogo}
+            src="/logo/Cygnus Exp.svg"
             alt="Cygnus Logo"
-            width={100}
+            width={10}
             height={50}
-            className="h-10 w-auto cursor-pointer"
+            className="h-9 w-auto cursor-pointer"
           />
         </a>
 

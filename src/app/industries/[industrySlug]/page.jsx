@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 // Industry Section Components
 import BankingFinance from "../../../components/sections/Industries/BankingFinance";
@@ -19,7 +20,7 @@ import ManufacturingBanner from "../../../../public/industrypics/Manufacturing/i
 import ConsumerSectorBanner from "../../../../public/industrypics/ConsumerSector/banner.jpg";
 import SmallMediumBusinessBanner from "../../../../public/industrypics/Smb/banner.jpg";
 
-// Data and Component Mapping
+// Utility
 const createSlug = (name) => {
   return name
     .toLowerCase()
@@ -28,12 +29,13 @@ const createSlug = (name) => {
     .replace(/[^\w-]+/g, "");
 };
 
+// Data
 const industries = [
   {
     name: "Banking & Finance",
     slug: createSlug("Banking & Finance"),
     description: "In the ever-evolving world of banking and finance, innovation and security are key drivers of success. We offer comprehensive solutions designed to meet the unique needs of financial institutions, empowering them to thrive in today’s competitive landscape.",
-    banner: "/Banking/banner.jpg",
+    banner: BankingBanner,
   },
   {
     name: "Oil & Gas",
@@ -67,20 +69,25 @@ const industries = [
   },
 ];
 
+// Component mapping
 const componentMap = {
   [createSlug("Banking & Finance")]: <BankingFinance />,
   [createSlug("Oil and Gas")]: <OilAndGas />,
   [createSlug("Education")]: <Education />,
   [createSlug("Manufacturing")]: <Manufacturing />,
   [createSlug("Consumer Sector")]: <ConsumerSector />,
-  [createSlug("Small and Medium Business (SMB)")]: <SmallMediumBusiness />,
+  [createSlug("Small and Medium Business (SMB)")]: (
+    <SmallMediumBusiness />
+  ),
 };
 
 const Industries = () => {
   const { industrySlug } = useParams();
   const router = useRouter();
-  const selected = industries.find((i) => i.slug === industrySlug) || industries[0];
-  
+
+  const selected =
+    industries.find((i) => i.slug === industrySlug) || industries[0];
+
   useEffect(() => {
     if (!industrySlug) {
       router.replace(`/industries/${industries[0].slug}`);
@@ -93,6 +100,7 @@ const Industries = () => {
 
   return (
     <div className="py-12">
+      {/* Tabs */}
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between w-full border border-indigo-200 shadow-xl h-auto rounded-full px-2 py-1 md:px-4 md:py-2 overflow-x-auto whitespace-nowrap">
           {industries.map((industry, index) => (
@@ -111,30 +119,37 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* Banner */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selected.slug}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="relative h-[16rem] md:h-[20rem] bg-gray-200 mt-10"
-          style={{
-            backgroundImage: `url(${selected?.banner.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          transition={{ duration: 0.5 }}
+          className="relative h-[16rem] md:h-[20rem] mt-10 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          {/* Image */}
+          <Image
+            src={selected.banner}
+            alt={selected.name}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* Title */}
           <div className="absolute inset-0 flex justify-center items-center px-4">
             <motion.h2
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="text-center text-white font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-wide leading-tight"
+              transition={{ delay: 0.2 }}
+              className="text-center text-white font-bold text-3xl sm:text-4xl md:text-5xl uppercase"
             >
-              {selected?.name}
+              {selected.name}
             </motion.h2>
           </div>
         </motion.div>
@@ -146,24 +161,22 @@ const Industries = () => {
           key={selected.slug + "-desc"}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          exit={{ opacity: 0 }}
           className="mt-8 px-4"
         >
-          <p className="text-center max-w-5xl mx-auto text-sm sm:text-base text-[#25272B] font-poppins leading-relaxed tracking-wide">
-            {selected?.description}
+          <p className="text-center max-w-5xl mx-auto text-sm sm:text-base text-[#25272B] leading-relaxed">
+            {selected.description}
           </p>
         </motion.div>
       </AnimatePresence>
 
-      {/* Section Component */}
+      {/* Section */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selected.slug + "-component"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
           className="mt-8"
         >
           {componentMap[selected.slug]}

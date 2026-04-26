@@ -68,7 +68,7 @@ export default function Contact() {
                   href="mailto:contact@corporate.com"
                   className="text-blue-600 hover:underline"
                 >
-                  contact@corporate.com
+                  sales@cygnussolutions.co.in
                 </a>
               </p>
               <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
@@ -77,7 +77,7 @@ export default function Contact() {
                   href="tel:+919876543210"
                   className="text-blue-600 hover:underline"
                 >
-                  +91 98765 43210
+                  +91-022-49636820
                 </a>
               </p>
             </div>
@@ -102,13 +102,13 @@ export default function Contact() {
                 Follow Us
               </h2>
               <div className="flex justify-center space-x-4 sm:space-x-6">
-                {[FaLinkedin, FaTwitter, FaInstagram, FaFacebook].map(
+                {[FaLinkedin].map(
                   (Icon, i) => (
                     <motion.a
                       key={i}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.9 }}
-                      href="#"
+                      href="https://www.linkedin.com/company/cygnus-information-solutions-pvt-ltd-/posts/?feedView=all"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

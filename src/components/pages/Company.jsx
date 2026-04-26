@@ -6,8 +6,6 @@ import Team from "../sections/Company/Team";
 import Values from "../sections/Company/Values";
 import Heads from "../sections/Company/Heads";
 import Banner from "../sections/Company/Banner";
-import TeamMembers from "../sections/Company/TeamMembers";
-import { MarqueeDemo } from "../sections/Company/MarqueeDemo";
 
 export default function Company() {
   return (
