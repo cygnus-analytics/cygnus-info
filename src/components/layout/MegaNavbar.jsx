@@ -160,6 +160,12 @@ const dropdownData = {
       description: "Automated audit process improving compliance, accuracy, and transparency effectively.",
       href: "/casestudies/bank-of-maharashtra-audit-automation-ie-manual-audit-to-online-audit",
     },
+    {
+      title: "Precision 3D Geospatial Visualization",
+      description:
+        "Advanced 3D stereo visualization solution improving mapping accuracy and geospatial productivity.",
+      href: "/casestudies/enabling-precision-3d-geospatial-visualization",
+    }
   ],
   
 };

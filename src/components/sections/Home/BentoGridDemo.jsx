@@ -79,6 +79,7 @@ const items = [
           src="/bgimages/bg20.jpg"
           alt="Background"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-fill"
         />
       </div>

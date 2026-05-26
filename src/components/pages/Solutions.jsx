@@ -16,6 +16,7 @@ import GetInTouch from "../sections/Solutions/GetInTouch";
 import { GoogleGeminiEffect } from "../ui/GoogleGeminEffect";
 import CloudSolutionsNew from "../sections/Solutions/CloudSolutionsNew";
 import AIMLNew from "../sections/Solutions/AIMLNew"
+import PluraView from "../sections/Solutions/PluraView";
 
 export default function Solutions() {
   const ref = useRef(null);
@@ -48,18 +49,22 @@ export default function Solutions() {
       </div>
 
       <Infrastructure />
+      <AIMLNew/>
       <CyberSecurity />
+      <CloudSolutionsNew/>
+      <AppleScroll/>
+      <PluraView/>
       <Storage />
       <Network />
       <EndPointSolutions />
       {/* <AudioVideoScreens /> */}
       {/* <PrintSolutions /> */}
       <PrintSolutions2/>
-      <AppleScroll/>
+    
       {/* <HighPerformanceComputing /> */}
       {/* <FiveGrid/> */}
-      <CloudSolutionsNew/>
-      <AIMLNew/>
+      
+      
       {/* <CloudSolutions /> */}
       {/* <AIML /> */}
       <GetInTouch />

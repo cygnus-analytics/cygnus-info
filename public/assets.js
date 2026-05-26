@@ -116,4 +116,18 @@ export const caseData = [
     solution: "Cygnus introduced an advanced audit automation system that digitized and streamlined the entire lifecycle of audit activities. New monitoring tools and real-time reporting capabilities enabled centralized tracking of transactions and compliance metrics. Automated workflows delivered timely alerts for discrepancies, and comprehensive training was provided to bank staff to ensure smooth adoption and value realization from the system.",
     result: "This initiative succeeded in cutting audit processing times by 50–60%, drastically reducing errors associated with manual entry and greatly improving overall data accuracy. Enhanced transparency and compliance capabilities now span all branches, while management gains real-time insights into audit and regulatory status, supporting faster, more confident decision-making.",
   },
+  {
+    id: 10,
+    heading: "Survey Of India - Precision 3D Geospatial Visualization",
+    slug: createSlug("Enabling Precision 3D Geospatial Visualization"),
+    image: "/casepics/cs10.jpeg",
+    challenge:
+      "Geospatial and mapping professionals required highly accurate 3D visualization capabilities to improve the limitations of traditional 2D workflows. Existing systems lacked the precision, depth perception, and performance necessary for advanced feature extraction, reducing operational efficiency and affecting mapping accuracy during long-duration projects across multiple locations.",
+  
+    solution:
+      "Cygnus deployed a high-performance 3D geospatial visualization environment featuring true passive stereo technology with zero flicker for extended work sessions. The solution included GPU-accelerated workstations designed for intensive point cloud, mesh, and orthophoto processing, along with high-resolution dual-display configurations for simultaneous stereo model viewing and attribute entry. The infrastructure was fully optimized for industry-standard photogrammetry applications including SOCET SET, SURE, Agisoft Metashape, and Bentley ContextCapture. Ergonomic workstation design further enabled mapping professionals to work efficiently for 8–10 continuous hours with reduced fatigue.",
+  
+    result:
+      "The implementation significantly enhanced mapping precision and operational productivity. Passive stereo visualization improved natural depth perception, increasing mapping accuracy by up to 40% compared to conventional 2D workflows. Operators achieved faster and more accurate 3D feature extraction, enabling completion of a higher number of map sheets per day while minimizing visual strain and operational fatigue.",
+  }
 ];

@@ -25,7 +25,7 @@ export default function CaseStudies() {
         industries.
       </motion.p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      <div className="flex flex-wrap justify-center gap-12">
         {caseData.map((card, index) => (
           <Link
             href={`/casestudies/${card.slug}`}

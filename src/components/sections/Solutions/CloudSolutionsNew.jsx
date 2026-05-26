@@ -35,6 +35,7 @@ const InfoCard = ({ image, title, content, reverse, index }) => {
           alt={title}
           fill
           priority
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover object-center"
         />
       </div>

@@ -59,6 +59,7 @@ const CustomCarousel = () => {
             alt={`Slide ${index + 1}`}
             className="w-full h-full object-cover"
             fill
+            sizes="100vw"
           />
           {/* Overlay div for opacity */}
           <div className="absolute inset-0 bg-black opacity-10 z-10"></div>{" "}
