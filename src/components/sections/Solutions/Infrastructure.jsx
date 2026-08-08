@@ -4,6 +4,7 @@ import dcm from "../../../../public/solutionpics/3.svg";
 import dcp from "../../../../public/solutionpics/4.svg";
 import cygnus_logo from "../../../../public/logo/cygnus.png";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -99,8 +100,8 @@ const Infrastructure = () => {
                     transition={{ duration: 0.3, type: "spring", stiffness: 400 }}
                     className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500 rounded-full w-40 h-40 sm:w-56 sm:h-56 flex justify-center items-center shadow-lg"
                   >
-                    <img
-                      src="logo/cygnus.png"
+                    <Image
+                      src={cygnus_logo}
                       alt="Cygnus Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />

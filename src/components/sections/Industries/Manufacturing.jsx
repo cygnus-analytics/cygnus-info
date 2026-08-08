@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import img1 from "../../../../public/industrypics/Manufacturing/data.jpg";
 import img2 from "../../../../public/industrypics/Manufacturing/itinfra.jpg";
 import img3 from "../../../../public/industrypics/Manufacturing/robot.jpg";
@@ -98,11 +99,13 @@ const Manufacturing = () => {
             </p>
 
             {/* Image */}
-            <div className="w-full aspect-[4/3] rounded-[24px] border border-[#E8E8E8] overflow-hidden">
-              <img
+            <div className="relative w-full aspect-[4/3] rounded-[24px] border border-[#E8E8E8] overflow-hidden">
+              <Image
                 src={card.image}
                 alt={card.title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
               />
             </div>
           </motion.div>

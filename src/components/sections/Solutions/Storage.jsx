@@ -4,6 +4,7 @@ import els from "../../../../public/solutionpics/7.svg";
 import st1 from "../../../../public/solutionpics/storage1.jpg";
 import st2 from "../../../../public/solutionpics/storage2.jpg";
 import st3 from "../../../../public/solutionpics/storage3.jpg";
+import Image from "next/image";
 import CardSwap, { Card } from "../../ui/CardSwap/CardSwap";
 import Squares from "../../ui/Squares";
 
@@ -83,12 +84,15 @@ const Storage = () => {
                   {item.description}
                 </p>
                 <hr className="border-t-2 w-full border-gray-700 mb-2" />
-                <img
-                  src={item.fullImage}
-                  alt={`${item.title} solution`}
-                  className="w-full h-[19rem] rounded-md"
-                  loading="lazy"
-                />
+                <div className="relative w-full h-[19rem] rounded-md overflow-hidden">
+                  <Image
+                    src={item.fullImage}
+                    alt={`${item.title} solution`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
               </Card>
             ))}
           </CardSwap>

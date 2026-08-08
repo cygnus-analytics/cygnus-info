@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Image from "next/image";
 import laptop from "../../../../public/solutionpics/laptop.jpg";
 import pc from "../../../../public/solutionpics/pc.jpg";
 import workstation from "../../../../public/solutionpics/work-station.jpg";
@@ -45,17 +46,17 @@ const EndPointSolutions = () => {
     {
       title: "Laptops",
       description: "From ultrabooks to rugged models, we provide laptops tailored to every role. Enjoy enterprise durability, strong security, and lifecycle support to boost workforce productivity.",
-      image: "solutionpics/laptop.jpg",
+      image: laptop,
     },
     {
       title: "PCs",
       description: "Reliable, cost-effective desktops built for office and specialized workloads. We handle configuration, deployment, and support—ensuring seamless integration with your infrastructure.",
-      image: "solutionpics/pc.jpg",
+      image: pc,
     },
     {
       title: "Work Stations",
       description: "Powerful workstations for CAD, 3D modeling, video editing, and engineering. Optimized performance with ISV certifications, warranty support, and expert services for demanding workflows.",
-      image: "solutionpics/work-station.jpg",
+      image: workstation,
     },
   ];
 
@@ -87,11 +88,12 @@ const EndPointSolutions = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="relative overflow-hidden rounded-lg mb-4 h-64">
-              <img
+              <Image
                 src={solution.image}
                 alt={solution.title}
-                className="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover object-center transform transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-blue-900 opacity-20 transition-opacity duration-300 group-hover:opacity-0"></div>
             </div>

@@ -1,7 +1,5 @@
-import nd1 from "../../../../public/solutionpics/nd1.jpg";
-import nd2 from "../../../../public/solutionpics/nd2.jpg";
-import nd3 from "../../../../public/solutionpics/nd3.jpg";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,17 +21,17 @@ const Network = () => {
     {
       title: "Network Design",
       description:"Build secure, scalable, and high-performance networks tailored to your business. Our designs ensure seamless connectivity, redundancy, and future-ready architecture for enterprise, campus, and hybrid cloud environments.",
-      image: "solutionpics/nd1.jpg",
+      image: "/solutionpics/nd1.jpg",
     },
     {
       title: "Active/Passive Networking",
       description: "Deploy reliable active solutions like switches, routers, and firewalls, paired with structured cabling and fiber systems. We deliver integrated, high-speed infrastructure that maximizes uptime and performance.",
-      image: "solutionpics/nd2.jpg",
+      image: "/solutionpics/nd2.jpg",
     },
     {
       title: "Network Management Tools",
       description: "Gain real-time visibility and control with advanced monitoring, fault detection, and performance analytics. Our tools help optimize traffic, prevent downtime, and ensure smooth business operations.",
-      image: "solutionpics/nd3.jpg",
+      image: "/solutionpics/nd3.jpg",
     },
   ];
 
@@ -74,12 +72,15 @@ const Network = () => {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="flex flex-col items-center gap-4 p-6 bg-white rounded-lg shadow-lg"
           >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-auto object-cover rounded-md aspect-[4/3] bg-blue-50"
-              loading="lazy"
-            />
+            <div className="relative w-full aspect-[4/3] bg-blue-50 rounded-md overflow-hidden">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
             <h3 className="text-lg sm:text-xl font-semibold text-center mb-2 font-poppins">
               {item.title}
             </h3>

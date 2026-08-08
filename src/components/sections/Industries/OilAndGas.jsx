@@ -1,8 +1,5 @@
 import { motion } from "framer-motion";
-import image1 from "../../../../public/industrypics/Oil/4.jpg";
-import image2 from "../../../../public/industrypics/Oil/3.jpg";
-import image3 from "../../../../public/industrypics/Oil/2.jpg";
-import image4 from "../../../../public/industrypics/Oil/1.jpg";
+import Image from "next/image";
 
 const cardVariants = {
   hiddenLeft: { opacity: 0, x: -80 },
@@ -58,11 +55,13 @@ const OilAndGas = () => {
             variants={cardVariants}
           >
             {/* Image Section */}
-            <div className="w-full md:w-1/2 h-64 md:h-60">
-              <img
+            <div className="relative w-full md:w-1/2 h-64 md:h-60">
+              <Image
                 src={card.image}
                 alt={card.title}
-                className="w-full h-full object-cover rounded-xl"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover rounded-xl"
               />
             </div>
 
