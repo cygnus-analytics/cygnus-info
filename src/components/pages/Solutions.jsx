@@ -48,18 +48,18 @@ export default function Solutions() {
         />
       </div>
 
-      <Infrastructure />
-      <AIMLNew/>
-      <CyberSecurity />
-      <CloudSolutionsNew/>
+      <div id="infrastructure"><Infrastructure /></div>
+      <div id="ai-ml"><AIMLNew/></div>
+      <div id="cyber-security"><CyberSecurity /></div>
+      <div id="cloud-solutions"><CloudSolutionsNew/></div>
       <AppleScroll/>
       <PluraView/>
-      <Storage />
-      <Network />
-      <EndPointSolutions />
+      <div id="storage"><Storage /></div>
+      <div id="network"><Network /></div>
+      <div id="end-point-solutions"><EndPointSolutions /></div>
       {/* <AudioVideoScreens /> */}
       {/* <PrintSolutions /> */}
-      <PrintSolutions2/>
+      <div id="print-solutions"><PrintSolutions2/></div>
     
       {/* <HighPerformanceComputing /> */}
       {/* <FiveGrid/> */}

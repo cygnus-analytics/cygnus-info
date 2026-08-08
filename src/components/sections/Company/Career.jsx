@@ -53,16 +53,16 @@ const Career = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 whileHover={{ scale: 1.02 }}
-                className="cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out py-4 w-full bg-white border border-gray-300 h-32 rounded-xl flex justify-between items-center px-8"
+                className="cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out py-4 w-full bg-white border border-gray-300 min-h-32 rounded-xl flex justify-between items-center gap-4 px-5 sm:px-8"
                 onClick={() => handleOpenForm(job.title)}
               >
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-lg font-semibold">{job.title}</h3>
-                  <p className="text-gray-600">
+                  <h3 className="text-base sm:text-lg font-semibold">{job.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base">
                     {job.type} | {job.level}
                   </p>
                 </div>
-                <IoIosAdd className="text-gray-600 hover:text-blue-800 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                <IoIosAdd className="shrink-0 text-gray-600 hover:text-blue-800 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                 </motion.div>
             ))}
           </div>

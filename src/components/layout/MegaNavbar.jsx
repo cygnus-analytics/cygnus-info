@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import cygnusLogo from "../../../public/logo/cygnus.png";
 
@@ -27,53 +27,53 @@ const dropdownData = {
       title: "Infrastructure",
       description:
         "Robust systems designed to support enterprise operations efficiently.",
-      href: "/solutions/infrastructure",
+      href: "/solutions#infrastructure",
     },
     {
       title: "Cyber Security",
       description: "Protect your data with advanced threat detection systems.",
-      href: "/solutions/cyber-security",
+      href: "/solutions#cyber-security",
     },
     {
       title: "Storage",
       description:
         "Reliable solutions for storing and managing critical information.",
-      href: "/solutions/storage",
+      href: "/solutions#storage",
     },
     {
       title: "Network",
       description:
         "High-performance networks ensuring seamless connectivity across systems.",
-      href: "/solutions/network",
+      href: "/solutions#network",
     },
     {
       title: "End Point Solutions",
       description: "Secure and manage all devices connected to your network.",
-      href: "/solutions/end-point-solutions",
+      href: "/solutions#end-point-solutions",
     },
     {
       title: "Print Solutions",
       description:
         "Efficient printing and document management for business operations.",
-      href: "/solutions/print-solutions",
+      href: "/solutions#print-solutions",
     },
     {
       title: "HPC",
       description:
         "High-performance computing for complex simulations and processing.",
-      href: "/solutions/hpc",
+      href: "/solutions",
     },
     {
       title: "Cloud Solutions",
       description:
         "Flexible cloud services to scale your infrastructure on demand.",
-      href: "/solutions/cloud-solutions",
+      href: "/solutions#cloud-solutions",
     },
     {
       title: "AI/ML",
       description:
         "Leverage artificial intelligence for smarter business decisions.",
-      href: "/solutions/ai-ml",
+      href: "/solutions#ai-ml",
     },
   ],
   industries: [
@@ -170,9 +170,13 @@ const dropdownData = {
   
 };
 
-const DropdownItem = ({ title, description, href }) => (
+const DropdownItem = ({ title, description, href, onClick }) => (
   <li>
-    <a href={href} className="block p-3 rounded-lg hover:bg-gray-100">
+    <a
+      href={href}
+      onClick={onClick}
+      className="block p-3 rounded-lg hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+    >
       <h4 className="font-semibold text-blue-800">{title}</h4>
       <span className="text-sm text-gray-800">{description}</span>
     </a>
@@ -183,6 +187,23 @@ const MegaNavbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    setActiveMenu(null);
+  };
 
   const renderDropdown = (menuKey, columns = 2) => (
     <div className="absolute top-full left-1/2 -translate-x-1/2 z-40 bg-white border-y border-gray-200 shadow-sm w-[40rem] p-4 rounded-xl">
@@ -211,12 +232,16 @@ const MegaNavbar = () => {
     >
       <div className="flex items-center justify-between mx-auto py-4 px-6">
         {/* Logo */}
-        <a href="/" className="flex items-center space-x-3">
+        <a
+          href="/"
+          className="flex items-center space-x-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+        >
           <Image
             src="/logo/Cygnus Exp.svg"
             alt="Cygnus Logo"
             width={10}
             height={50}
+            priority
             className="h-9 w-auto cursor-pointer"
           />
         </a>
@@ -227,7 +252,7 @@ const MegaNavbar = () => {
             <li>
               <a
                 href="/"
-                className="block py-2 px-2 text-gray-900 rounded-md hover:text-blue-800 transition-colors"
+                className="block py-2 px-2 text-gray-900 rounded-md hover:text-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
               >
                 Home
               </a>
@@ -239,10 +264,16 @@ const MegaNavbar = () => {
                 className="relative"
                 onMouseEnter={() => setActiveMenu(menu)}
                 onMouseLeave={() => setActiveMenu(null)}
+                onFocus={() => setActiveMenu(menu)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) {
+                    setActiveMenu(null);
+                  }
+                }}
               >
                 <a
                   href={menuRoutes[menu]}
-                  className={`flex items-center w-full py-2 px-3 text-gray-900 rounded-md hover:text-blue-800 transition-colors ${
+                  className={`flex items-center w-full py-2 px-3 text-gray-900 rounded-md hover:text-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
                     activeMenu === menu ? "text-blue-600" : ""
                   }`}
                 >
@@ -255,7 +286,7 @@ const MegaNavbar = () => {
             <li>
               <a
                 href="/company"
-                className="block py-2 px-3 text-gray-900 rounded-md hover:text-blue-800 transition-colors"
+                className="block py-2 px-3 text-gray-900 rounded-md hover:text-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
               >
                 Company
               </a>
@@ -267,7 +298,7 @@ const MegaNavbar = () => {
         <div className="hidden md:flex">
           <a
             href="/contact"
-            className="hidden lg:block text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50 font-medium rounded-3xl text-sm px-5 py-2.5 text-center"
+            className="hidden lg:block text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50 font-medium rounded-3xl text-sm px-5 py-2.5 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             >
             Contact Us
           </a>
@@ -275,9 +306,12 @@ const MegaNavbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            setMenuOpen((prev) => !prev);
+            setActiveMenu(null);
+          }}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
           aria-controls="mobile-menu"
           aria-expanded={menuOpen}
         >
@@ -299,12 +333,17 @@ const MegaNavbar = () => {
         </button>
       </div>
 
-      <div className={`md:hidden ${menuOpen ? "block" : "hidden"}`}>
+      <div
+        className={`md:hidden overflow-y-auto max-h-[calc(100vh-4.5rem)] ${
+          menuOpen ? "block" : "hidden"
+        }`}
+      >
         <ul className="flex flex-col p-4 space-y-2 font-medium bg-gray-50 border-t border-gray-200">
           <li>
             <a
               href="/"
-              className="block py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100"
+              onClick={closeMobileMenu}
+              className="block py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             >
               Home
             </a>
@@ -314,13 +353,13 @@ const MegaNavbar = () => {
             <li key={menu} className="relative">
               <a
                 href={menuRoutes[menu]}
-                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100"
+                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
                 onClick={(e) => {
                   e.preventDefault();
                   setActiveMenu(activeMenu === menu ? null : menu);
                 }}
               >
-                {menu.charAt(0).toUpperCase() + menu.slice(1)}
+                {formatMenuTitle(menu)}
                 <svg
                   className={`w-3 h-3 ml-2 transition-transform duration-200 ${
                     activeMenu === menu ? "rotate-180" : ""
@@ -339,15 +378,15 @@ const MegaNavbar = () => {
                 </svg>
               </a>
               <div
-                className={`mt-2 bg-white rounded-lg shadow-md transition-all duration-300 overflow-hidden ${
+                className={`mt-2 bg-white rounded-lg shadow-md transition-all duration-300 overflow-y-auto ${
                   activeMenu === menu
-                    ? "max-h-96 opacity-100"
+                    ? "max-h-[60vh] opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
                 <ul className="p-2 space-y-1">
                   {dropdownData[menu].map((item, index) => (
-                    <DropdownItem key={index} {...item} />
+                    <DropdownItem key={index} {...item} onClick={closeMobileMenu} />
                   ))}
                 </ul>
               </div>
@@ -357,7 +396,8 @@ const MegaNavbar = () => {
           <li>
             <a
               href="/company"
-              className="block py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100"
+              onClick={closeMobileMenu}
+              className="block py-2 px-3 text-gray-900 rounded-md hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             >
               Company
             </a>
@@ -366,7 +406,8 @@ const MegaNavbar = () => {
           <li className="block lg:hidden">
             <a
               href="/contact"
-              className="block text-center text-white bg-gradient-to-r from-blue-500 to-blue-900 hover:opacity-90 shadow-lg shadow-blue-500/50 font-medium rounded-2xl text-sm px-5 py-2.5 transition-all duration-300"
+              onClick={closeMobileMenu}
+              className="block text-center text-white bg-gradient-to-r from-blue-500 to-blue-900 hover:opacity-90 shadow-lg shadow-blue-500/50 font-medium rounded-2xl text-sm px-5 py-2.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             >
               Contact Us
             </a>

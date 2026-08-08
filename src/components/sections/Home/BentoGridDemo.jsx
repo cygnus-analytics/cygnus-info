@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../../ui/BentoGrid";
 import { Ripple } from "@/components/ui/Ripple";
+import LazyVideo from "../../ui/LazyVideo";
 import logo from "../../../../public/logo/cygnus.png";
 
 const items = [
@@ -17,16 +18,11 @@ const items = [
       </p>
     ),
     header: (
-      <div className="relative w-full h-full rounded-lg overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+      <div className="relative w-full h-full rounded-lg overflow-hidden bg-blue-100">
+        <LazyVideo
+          src="/bgimages/mov2.mp4"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/bgimages/mov2.mp4" type="video/mp4" />
-        </video>
+        />
       </div>
     ),
   },
@@ -56,6 +52,7 @@ const items = [
           alt="Centered Logo"
           width={180}
           height={150}
+          style={{ width: "auto", height: "auto" }}
           className="z-10 object-contain"
         />
       </div>

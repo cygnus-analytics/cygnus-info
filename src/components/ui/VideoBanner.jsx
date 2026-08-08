@@ -1,19 +1,17 @@
 "use client";
 import { LayoutTextFlip } from "../ui/LayoutFlipText";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import React from "react";
+import LazyVideo from "./LazyVideo";
 
 const VideoBanner = () => {
   return (
-    <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
+    <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden bg-blue-950">
       {/* Background Video */}
-      <video
+      <LazyVideo
         className="absolute top-0 left-0 w-full h-full object-cover"
         src="/bgimages/mov.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+        deferUntilIdle
       />
 
       {/* Dark Overlay */}

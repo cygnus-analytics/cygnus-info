@@ -1,9 +1,10 @@
 "use client";
 import { ContainerScroll } from "../ui/ContainerScroll";
 import { motion } from "framer-motion";
+import LazyVideo from "./LazyVideo";
 
 export default function HeroScrollDemo() {
-  const hpcVideoPath = "../../../public/solutionpics/hpc.mp4";
+  const hpcVideoPath = "/solutionpics/hpc.mp4";
   return (
     <div className="flex flex-col overflow-hidden">
       <ContainerScroll
@@ -37,15 +38,9 @@ export default function HeroScrollDemo() {
           </>
         }
       >
-        <video
+        <LazyVideo
           src={hpcVideoPath}
-          alt="hero"
-          width={1400}
-          height={720}
-          className="mx-auto rounded-2xl object-cover h-full w-full"
-          autoPlay
-          muted
-          loop
+          className="mx-auto rounded-2xl object-cover h-full w-full bg-gray-100"
         />
       </ContainerScroll>
     </div>

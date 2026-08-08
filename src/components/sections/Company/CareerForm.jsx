@@ -4,8 +4,12 @@ import { UploadOutlined } from "@ant-design/icons";
 
 const CareerForm = ({ selectedJob }) => {
   const [statusMessage, setStatusMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [form] = Form.useForm();
 
   const onFinish = async (values) => {
+    setSubmitting(true);
+    setStatusMessage("");
     const formData = new FormData();
     formData.append("access_key", "fd76397b-5a95-4f73-b421-b13e6abdb121");
     formData.append("name", values.name);
@@ -25,12 +29,15 @@ const CareerForm = ({ selectedJob }) => {
 
       if (res.success) {
         setStatusMessage("Application submitted successfully!");
+        form.resetFields();
       } else {
         setStatusMessage("Failed to submit. Please try again.");
       }
     } catch (error) {
       setStatusMessage("An error occurred. Please try again later.");
       console.error("Error:", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -38,7 +45,7 @@ const CareerForm = ({ selectedJob }) => {
     <div className="p-2">
       <h2 className="text-xl font-semibold text-center mb-4">{selectedJob}</h2>
 
-      <Form layout="vertical" onFinish={onFinish}>
+      <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
           label="Full Name"
           name="name"
@@ -93,13 +100,17 @@ const CareerForm = ({ selectedJob }) => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" block>
-            Submit Application
+          <Button type="primary" htmlType="submit" block loading={submitting} disabled={submitting}>
+            {submitting ? "Submitting..." : "Submit Application"}
           </Button>
         </Form.Item>
 
         {statusMessage && (
-          <p className="text-center text-sm font-semibold text-gray-700">
+          <p
+            className={`text-center text-sm font-semibold ${
+              statusMessage.includes("success") ? "text-green-600" : "text-red-600"
+            }`}
+          >
             {statusMessage}
           </p>
         )}

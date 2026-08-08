@@ -3,7 +3,7 @@ import React, { useRef, useState, createContext } from "react";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 import Image from "next/image";
 import { cn } from "../../lib/utils";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const CarouselContext = createContext({
   currentIndex: 0,
@@ -108,6 +108,7 @@ export const Card = ({ card, onClick }) => {
         src={card.src}
         alt={card.title}
         fill
+        sizes="(max-width: 768px) 224px, 384px"
         className="absolute inset-0 z-10 object-cover"
       />
     </button>

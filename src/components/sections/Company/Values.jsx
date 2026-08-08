@@ -9,25 +9,25 @@ const Values = () => {
       icon: <AiOutlineEye className="text-blue-800 size-8" />,
       heading: "Default to Transparency",
       content:
-        "Leverage automation and virtualization with our high-quality, customized end-user computing solutions. Cygnus offers cutting-edge enterprise and cloud computing products that ensure seamless workspace collaboration and user adoption.",
+        "We communicate openly with clients and teammates alike, sharing progress, trade-offs, and setbacks honestly so everyone can make informed decisions together.",
     },
     {
       icon: <FaTools className="text-blue-800 size-8" />,
       heading: "Improve Consistently",
       content:
-        "Our cloud solutions enable businesses to adopt cloud platforms efficiently. We provide secure, scalable, and cost-effective cloud integration and management services to optimize your IT infrastructure.",
+        "We treat every project as a chance to sharpen our craft, investing in new tools, training, and processes so our solutions keep getting faster, safer, and smarter.",
     },
     {
       icon: <FaHandsHelping className="text-blue-800 size-8" />,
       heading: "Show Gratitude",
       content:
-        "Unlock the power of data with our analytics services. We provide actionable insights, real-time reporting, and predictive analytics to help you make informed decisions.",
+        "We recognize the effort behind every win, celebrating our team's contributions and the trust our clients place in us at every step of the journey.",
     },
     {
       icon: <BsLightbulb className="text-blue-800 size-8" />,
       heading: "Reflect to Unblock",
       content:
-        "Protect your business from cyber threats with our robust network security solutions. We offer firewalls, intrusion detection, and end-to-end encryption for complete protection.",
+        "When we hit a roadblock, we pause to understand the root cause rather than just patching symptoms, turning every challenge into a lasting improvement.",
     },
   ];
 

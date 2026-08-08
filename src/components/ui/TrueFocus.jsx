@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 const TrueFocus = ({
   sentence = 'True Focus',

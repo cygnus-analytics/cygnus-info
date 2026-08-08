@@ -36,7 +36,7 @@ const Banner = () => {
         {/* Animated Button Text */}
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center gap-2 text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 ../../../../public:focus:ring-blue-800 shadow-lg shadow-blue-500/50 ../../../../public:shadow-lg ../../../../public:shadow-blue-800/80 font-bold rounded-3xl text-md px-6 py-3 text-center"
+          className="inline-flex items-center justify-center gap-2 text-white bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-bold rounded-3xl text-md px-6 py-3 text-center"
         >
           <BlurText
             text="Let's Talk Now"
@@ -53,7 +53,7 @@ const Banner = () => {
           {/* Column 1 */}
           <div className="bg-white p-4 rounded-lg">
             <video
-              src="/ai3.mp4"
+              src="/anim/ai3.mp4"
               autoPlay
               loop
               muted
@@ -74,7 +74,7 @@ const Banner = () => {
           {/* Column 2 */}
           <div className="bg-white p-4 rounded-lg">
             <video
-              src="/ai2.mp4"
+              src="/anim/ai2.mp4"
               autoPlay
               loop
               muted
@@ -95,7 +95,7 @@ const Banner = () => {
           {/* Column 3 */}
           <div className="bg-white p-4 rounded-lg">
             <video
-              src="/ai1.mp4"
+              src="/anim/ai1.mp4"
               autoPlay
               loop
               muted
